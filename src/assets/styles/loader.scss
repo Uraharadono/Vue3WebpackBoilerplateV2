@@ -1,0 +1,499 @@
+.overlay {
+	background: #2c435b;
+	bottom: 0;
+	left: 0;
+	position: fixed;
+	right: 0;
+	top: 0;
+	z-index: 9998
+}
+
+.component-overlay {
+    background-color:#eceaea;
+    opacity: 0.4;
+    filter: alpha(opacity=40);
+	bottom: 0;
+	left: 0;
+    /*I know it's stupid, but I could not get things to center, so I found solution here. Paying homage!*/
+    /*https://5balloons.info/overlay-a-div-with-loading-spinner-image-in-center/*/
+	position: absolute; 
+	right: 0;
+	top: 0;
+	z-index: 9998
+}
+
+.loader,
+.loader-3 span {
+	left: 50%;
+	top: 50%;
+	position: absolute
+}
+
+.loader {
+	transform: translate3d(-50%, -50%, 0);
+	z-index: 9999
+}
+
+.loader span {
+	-webkit-animation: slide 1s infinite;
+	animation: slide 1s infinite;
+	border-radius: 50%;
+	display: inline-block;
+	height: 24px;
+	width: 24px
+}
+
+.loader span:first-child {
+	-webkit-animation-delay: .1s;
+	animation-delay: .1s;
+	background: #516478
+}
+
+.loader span:nth-child(2) {
+	-webkit-animation-delay: .2s;
+	animation-delay: .2s;
+	background: #ff8534
+}
+
+.loader span:nth-child(3) {
+	-webkit-animation-delay: .3s;
+	animation-delay: .3s;
+	background: #020c1b
+}
+
+.loader span:nth-child(4) {
+	-webkit-animation-delay: .4s;
+	animation-delay: .4s;
+	background: #020c1b
+}
+
+.loader span:nth-child(5) {
+	-webkit-animation-delay: .5s;
+	animation-delay: .5s;
+	background: #020c1b
+}
+
+@keyframes slide {
+	0%,
+	to {
+		transform: scale(1)
+	}
+	50% {
+		opacity: .3;
+		transform: scale(2)
+	}
+}
+
+
+@-webkit-keyframes loader-2 {
+	0%,
+	50%,
+	to {
+		transform: translateY(0)
+	}
+	25% {
+		transform: translateY(15px)
+	}
+}
+
+@-webkit-keyframes loader-3 {
+	0% {
+		transform: translate(0)
+	}
+	12.5% {
+		transform: translate(27.5px, -57px) scale(1.1)
+	}
+	25% {
+		transform: translate(55px);
+		-webkit-animation-timing-function: ease-out;
+		animation-timing-function: ease-out
+	}
+	37.5% {
+		transform: translate(27.5px, 57px)
+	}
+	50% {
+		transform: translate(0)
+	}
+	62.5% {
+		transform: translate(-27.5px, -57px) scale(1.1);
+		-webkit-animation-timing-function: ease-in;
+		animation-timing-function: ease-in
+	}
+	75% {
+		transform: translate(-55px);
+		-webkit-animation-timing-function: ease-out;
+		animation-timing-function: ease-out
+	}
+	87.5% {
+		transform: translate(-27.5px, 57px)
+	}
+	to {
+		transform: translate(0)
+	}
+}
+
+@-webkit-keyframes rotate-360 {
+	0% {
+		transform: rotate(0)
+	}
+	to {
+		transform: rotate(1turn)
+	}
+}
+
+@-webkit-keyframes loader-5-1 {
+	0% {
+		transform: scaleX(0)
+	}
+	12.5%,
+	50% {
+		transform: scale(1)
+	}
+	62.5% {
+		transform: scaleX(0);
+		transform-origin: 100% 100%
+	}
+	to {
+		transform: scaleX(0)
+	}
+}
+
+@-webkit-keyframes loader-5-2 {
+	0%,
+	12.5% {
+		transform: scaleY(0)
+	}
+	25% {
+		transform: scale(1);
+		transform-origin: 0 0
+	}
+	62.5% {
+		transform: scale(1)
+	}
+	75% {
+		transform: scaleY(0);
+		transform-origin: 100% 100%
+	}
+	to {
+		transform: scaleY(0)
+	}
+}
+
+@-webkit-keyframes loader-5-3 {
+	0%,
+	25% {
+		transform: scaleX(0)
+	}
+	37.5% {
+		transform: scale(1);
+		transform-origin: 100% 100%
+	}
+	75% {
+		transform: scale(1)
+	}
+	87.5% {
+		transform: scaleX(0);
+		transform-origin: 0 0
+	}
+	to {
+		transform: scaleX(0)
+	}
+}
+
+@-webkit-keyframes loader-5-4 {
+	0%,
+	37.5% {
+		transform: scaleY(0)
+	}
+	50% {
+		transform: scale(1);
+		transform-origin: 100% 100%
+	}
+	87.5% {
+		transform: scale(1)
+	}
+	to {
+		transform: scaleY(0);
+		transform-origin: 0 0
+	}
+}
+
+.loader-2 span {
+	-webkit-animation: loader-2 1s infinite;
+	animation: loader-2 1s infinite;
+	border-radius: 0;
+	height: 5px;
+	width: 9px
+}
+
+@keyframes loader-2 {
+	0%,
+	50%,
+	to {
+		transform: translateY(0)
+	}
+	25% {
+		transform: translateY(15px)
+	}
+}
+
+.loader-3 {
+	height: 100px;
+	width: 100px
+}
+
+.loader-3 span {
+	-webkit-animation: loader-3 2.1s linear infinite;
+	animation: loader-3 2.1s linear infinite;
+	height: 14px;
+	margin: -7px 0 0 -7px;
+	transform: translateY(-50%);
+	width: 14px
+}
+
+.loader-3 span:first-child {
+	-webkit-animation-delay: -.7s;
+	animation-delay: -.7s
+}
+
+.loader-3 span:nth-child(2) {
+	-webkit-animation-delay: -1.4s;
+	animation-delay: -1.4s
+}
+
+.loader-3 span:nth-child(3) {
+	-webkit-animation-delay: -2.1s;
+	animation-delay: -2.1s
+}
+
+.loader-3 span:nth-child(4),
+.loader-3 span:nth-child(5) {
+	display: none
+}
+
+@keyframes loader-3 {
+	0% {
+		transform: translate(0)
+	}
+	12.5% {
+		transform: translate(27.5px, -57px) scale(1.1)
+	}
+	25% {
+		transform: translate(55px);
+		-webkit-animation-timing-function: ease-out;
+		animation-timing-function: ease-out
+	}
+	37.5% {
+		transform: translate(27.5px, 57px)
+	}
+	50% {
+		transform: translate(0)
+	}
+	62.5% {
+		transform: translate(-27.5px, -57px) scale(1.1);
+		-webkit-animation-timing-function: ease-in;
+		animation-timing-function: ease-in
+	}
+	75% {
+		transform: translate(-55px);
+		-webkit-animation-timing-function: ease-out;
+		animation-timing-function: ease-out
+	}
+	87.5% {
+		transform: translate(-27.5px, 57px)
+	}
+	to {
+		transform: translate(0)
+	}
+}
+
+@keyframes loader-5-1 {
+	0% {
+		transform: scaleX(0)
+	}
+	12.5%,
+	50% {
+		transform: scale(1)
+	}
+	62.5% {
+		transform: scaleX(0);
+		transform-origin: 100% 100%
+	}
+	to {
+		transform: scaleX(0)
+	}
+}
+
+@keyframes loader-5-2 {
+	0%,
+	12.5% {
+		transform: scaleY(0)
+	}
+	25% {
+		transform: scale(1);
+		transform-origin: 0 0
+	}
+	62.5% {
+		transform: scale(1)
+	}
+	75% {
+		transform: scaleY(0);
+		transform-origin: 100% 100%
+	}
+	to {
+		transform: scaleY(0)
+	}
+}
+
+@keyframes loader-5-3 {
+	0%,
+	25% {
+		transform: scaleX(0)
+	}
+	37.5% {
+		transform: scale(1);
+		transform-origin: 100% 100%
+	}
+	75% {
+		transform: scale(1)
+	}
+	87.5% {
+		transform: scaleX(0);
+		transform-origin: 0 0
+	}
+	to {
+		transform: scaleX(0)
+	}
+}
+
+@keyframes loader-5-4 {
+	0%,
+	37.5% {
+		transform: scaleY(0)
+	}
+	50% {
+		transform: scale(1);
+		transform-origin: 100% 100%
+	}
+	87.5% {
+		transform: scale(1)
+	}
+	to {
+		transform: scaleY(0);
+		transform-origin: 0 0
+	}
+}
+
+
+.loader-4 {
+	height: 50px;
+	width: 50px
+}
+
+.loader-4 span {
+	-webkit-animation: none;
+	animation: none;
+	display: block;
+	height: 100%;
+	width: 100%
+}
+
+.loader-4 span:nth-child(3),
+.loader-4 span:nth-child(4),
+.loader-4 span:nth-child(5),
+.loader-5 span:nth-child(5) {
+	display: none
+}
+
+.loader-4 span:first-child {
+	background: 0 0;
+	box-shadow: inset 0 0 4px 2px rgba(81, 100, 120, .3)
+}
+
+.loader-4 span:nth-child(2) {
+	-webkit-animation: rotate-360 1s linear infinite;
+	animation: rotate-360 1s linear infinite;
+	background: 0 0;
+	box-shadow: inset 0 2px 0 #ff8534;
+	left: 0;
+	position: absolute;
+	top: 0
+}
+
+@keyframes rotate-360 {
+	0% {
+		transform: rotate(0)
+	}
+	to {
+		transform: rotate(1turn)
+	}
+}
+
+.loader-5 {
+	height: 60px;
+	width: 60px
+}
+
+.loader-5 span {
+	-webkit-animation: none;
+	animation: none;
+	border-radius: 0;
+	position: absolute;
+	transform-origin: 0 0
+}
+
+.loader-5 span:first-child {
+	-webkit-animation: loader-5-1 4s infinite;
+	animation: loader-5-1 4s infinite;
+	height: 2px;
+	left: 0;
+	top: 0;
+	width: 100%
+}
+
+.loader-5 span:nth-child(2) {
+	-webkit-animation: loader-5-2 4s infinite;
+	animation: loader-5-2 4s infinite;
+	height: 100%;
+	right: 0;
+	top: 0;
+	width: 2px
+}
+
+.loader-5 span:nth-child(3) {
+	-webkit-animation: loader-5-3 4s infinite;
+	animation: loader-5-3 4s infinite;
+	bottom: 0;
+	height: 2px;
+	right: 0;
+	transform-origin: 100% 100%;
+	width: 100%
+}
+
+.loader-5 span:nth-child(4) {
+	-webkit-animation: loader-5-4 4s infinite;
+	animation: loader-5-4 4s infinite;
+	bottom: 0;
+	height: 100%;
+	left: 0;
+	transform-origin: 100% 100%;
+	width: 2px
+}
+
+@-webkit-keyframes loaderAnimation {
+	0% {
+		background-position: -468px 0
+	}
+	to {
+		background-position: 468px 0
+	}
+}
+
+@keyframes loaderAnimation {
+	0% {
+		background-position: -468px 0
+	}
+	to {
+		background-position: 468px 0
+	}
+}
