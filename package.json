@@ -13,9 +13,11 @@
   },
   "dependencies": {
     "@babel/runtime": "^7.20.6",
+    "axios": "^1.2.1",
     "core-js": "^3.26.1",
     "nprogress": "^0.2.0",
     "pinia": "^2.0.28",
+    "qs": "^6.11.0",
     "vue": "^3.2.45",
     "vue-router": "^4.1.6"
   },

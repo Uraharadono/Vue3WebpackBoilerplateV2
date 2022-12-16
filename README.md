@@ -2,7 +2,7 @@
 Vue.js@3.x with webpack
 
 A Vue 3 Starter Boilerplate using Webpack 5 instead of CLI . 
-Also used Typescript 4, NProgress, Custom loader components, Custom auth guard directive logic (using JWT tokens), Datepicker, Vue Router 4, Pinia 2, Prettier and More.
+Also used Typescript 4, NProgress, Custom loader components, Custom auth guard directive logic (using JWT tokens), Axios overhang to look similar to old Ajax  Datepicker, Vue Router 4, Pinia 2, Prettier and More.
 
 **And not using the Vue CLI.**
 

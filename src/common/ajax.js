@@ -1,136 +1,128 @@
-import axios from "axios";
-import { stringify } from "qs";
-import { authHeader } from "./auth-header";
+import axios from 'axios';
+import { stringify } from 'qs';
+import { authHeader } from './auth-header';
 
 function forwardTo(url) {
-    window.location = url;
+	window.location = url;
 }
 
 function handleError(error) {
-    let response = {};
+	let response = {};
 
-    if (error && error.response.status === 401) {
-        let redirectUrl = "/login";
-        if(window.location.pathname != "/")
-        {
-            redirectUrl += "?returnUrl=" + window.location.pathname;
-        }
-        forwardTo(redirectUrl);
-    }
+	if (error && error.response.status === 401) {
+		let redirectUrl = '/login';
+		if (window.location.pathname != '/') {
+			redirectUrl += '?returnUrl=' + window.location.pathname;
+		}
+		forwardTo(redirectUrl);
+	}
 
-    // missing role
-    //if (error && error.response.status === 403) {
-    //  console.log("has no rights to do this")
-    //}
+	// missing role
+	//if (error && error.response.status === 403) {
+	//  console.log("has no rights to do this")
+	//}
 
-    if (error.response) {
-        response = {
-            status: error.response.status,
-            publicMessage: error.response.statusText,
-            ...error.response.data
-        };
-    }
+	if (error.response) {
+		response = {
+			status: error.response.status,
+			publicMessage: error.response.statusText,
+			...error.response.data,
+		};
+	}
 
-    return Promise.reject(response);
+	return Promise.reject(response);
 }
 
-function createRequest(url, data, type, customHeaders = {}, responseType ) {
-    // eslint-disable-next-line no-undef
-    const absoluteUrl = API_BASE_URL + url;
+function createRequest(url, data, type, customHeaders = {}, responseType) {
+	// eslint-disable-next-line no-undef
+	const absoluteUrl = API_BASE_URL + url;
 
-    const headers = {
-        "Content-Type": "application/json",
-        "X-Requested-With": "XMLHttpRequest",
-        ...customHeaders,
-        ...authHeader()// In my case always add auth header
-    };
+	const headers = {
+		'Content-Type': 'application/json',
+		'X-Requested-With': 'XMLHttpRequest',
+		...customHeaders,
+		...authHeader(), // In my case always add auth header
+	};
 
-    // if (info && info.accessToken) {
-    //     // const info = fetchAuthInfo();
-    //     // headers.Authorization = `Bearer ${info.accessToken}`;
-    // }
+	// if (info && info.accessToken) {
+	//     // const info = fetchAuthInfo();
+	//     // headers.Authorization = `Bearer ${info.accessToken}`;
+	// }
 
-    return {
-        url: absoluteUrl,
-        headers,
-        method: type,
-        data,
-        withCredentials: true,
-        responseType: responseType
-    };
+	return {
+		url: absoluteUrl,
+		headers,
+		method: type,
+		data,
+		withCredentials: true,
+		responseType: responseType,
+	};
 }
 
 function get(url, data = {}, customHeaders = {}) {
-    const request = Object.assign({}, createRequest(url, null, "GET", customHeaders), {
-        params: data,
-        paramsSerializer: params =>
-            stringify(params, { allowDots: true, skipNulls: true })
-    });
-    return axios(request)
-        .then(response => response.data)
-        .catch(handleError);
+	const request = Object.assign({}, createRequest(url, null, 'GET', customHeaders), {
+		params: data,
+		paramsSerializer: (params) => stringify(params, { allowDots: true, skipNulls: true }),
+	});
+	return axios(request)
+		.then((response) => response.data)
+		.catch(handleError);
 }
 
 function post(url, data = null) {
-    return axios(createRequest(url, data, "POST"))
-        .then(response => response.data)
-        .catch(handleError);
+	return axios(createRequest(url, data, 'POST'))
+		.then((response) => response.data)
+		.catch(handleError);
 }
 
 function put(url, data = null) {
-    return axios(createRequest(url, data, "PUT"))
-        .then(response => response.data)
-        .catch(handleError);
+	return axios(createRequest(url, data, 'PUT'))
+		.then((response) => response.data)
+		.catch(handleError);
 }
 
 function del(url, data = null) {
-    return axios(createRequest(url, data, "DELETE"))
-        .then(response => response.data)
-        .catch(handleError);
+	return axios(createRequest(url, data, 'DELETE'))
+		.then((response) => response.data)
+		.catch(handleError);
 }
 
-function constructFetchUrl(url, data = null)
-{
-    return createRequest(
-        url +
-      "?" +
-      stringify(data, { allowDots: true, skipNulls: true }, null, "GET")
-    ).url;
+function constructFetchUrl(url, data = null) {
+	return createRequest(
+		url + '?' + stringify(data, { allowDots: true, skipNulls: true }, null, 'GET')
+	).url;
 }
 
 function getFile(url, data = {}) {
-    const request = Object.assign({}, createRequest(url, null, "GET", {}, 'blob'), {
-        params: data,
-        paramsSerializer: params =>
-            stringify(params, { allowDots: true, skipNulls: true })
-    });
-    return axios(request)
-        .then(response => response.data)
-        .catch(handleError);
+	const request = Object.assign({}, createRequest(url, null, 'GET', {}, 'blob'), {
+		params: data,
+		paramsSerializer: (params) => stringify(params, { allowDots: true, skipNulls: true }),
+	});
+	return axios(request)
+		.then((response) => response.data)
+		.catch(handleError);
 }
 
 function getFilePost(url, data = {}) {
-    const request = Object.assign({}, createRequest(url, data, "POST", {}, 'blob'), {
-        params: data,
-        paramsSerializer: params =>
-            stringify(params, { allowDots: true, skipNulls: true })
-    });
-    return axios(request)
-        .then(response => response.data)
-        .catch(handleError);
+	const request = Object.assign({}, createRequest(url, data, 'POST', {}, 'blob'), {
+		params: data,
+		paramsSerializer: (params) => stringify(params, { allowDots: true, skipNulls: true }),
+	});
+	return axios(request)
+		.then((response) => response.data)
+		.catch(handleError);
 }
 
 export default {
-    createRequest,
-    constructFetchUrl,
-    get,
-    post,
-    put,
-    del,
-    getFile,
-    getFilePost,
+	createRequest,
+	constructFetchUrl,
+	get,
+	post,
+	put,
+	del,
+	getFile,
+	getFilePost,
 };
-
 
 /* ******************************************************************
     Code below is me trying to use Javascript fetch to do calls.
