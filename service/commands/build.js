@@ -1,44 +1,44 @@
-'use strict'
+'use strict';
 
-const loadEnv = require('../utils/loadEnv')
-loadEnv()
-loadEnv('production')
+const loadEnv = require('../utils/loadEnv');
+loadEnv();
+loadEnv('production');
 
-const rm = require('rimraf')
-const webpack = require('webpack')
+const rm = require('rimraf');
+const webpack = require('webpack');
 
-const { error, done } = require('../utils/logger')
-const { logWithSpinner, stopSpinner } = require('../utils/spinner')
-const paths = require('../utils/paths')
+const { error, done } = require('../utils/logger');
+const { logWithSpinner, stopSpinner } = require('../utils/spinner');
+const paths = require('../utils/paths');
 
-const webpackConfig = require('../config/prod')
-const config = require('../project.config')
+const webpackConfig = require('../config/prod');
+const config = require('../project.config');
 
-logWithSpinner('Building for production...')
+logWithSpinner('Building for production...');
 
 rm(paths.resolve(config.outputDir), (err) => {
-  if (err) throw err
+	if (err) throw err;
 
-  webpack(webpackConfig, (err, stats) => {
-    stopSpinner(false)
+	webpack(webpackConfig, (err, stats) => {
+		stopSpinner(false);
 
-    if (err) throw err
+		if (err) throw err;
 
-    process.stdout.write(
-      stats.toString({
-        colors: true,
-        modules: false,
-        children: false,
-        chunks: false,
-        chunkModules: false,
-      }) + '\n\n'
-    )
+		process.stdout.write(
+			stats.toString({
+				colors: true,
+				modules: false,
+				children: false,
+				chunks: false,
+				chunkModules: false,
+			}) + '\n\n'
+		);
 
-    if (stats.hasErrors()) {
-      error('Build failed with errors.\n')
-      process.exit(1)
-    }
+		if (stats.hasErrors()) {
+			error('Build failed with errors.\n');
+			process.exit(1);
+		}
 
-    done('Build complete.\n')
-  })
-})
+		done('Build complete.\n');
+	});
+});

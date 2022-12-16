@@ -15,6 +15,12 @@ const config = require('../project.config');
 const isProd = process.env.NODE_ENV === 'production';
 const outputFileName = `js/[name]${isProd ? '.[contenthash:8]' : ''}.js`;
 
+let API_BASE_URL = {
+	production: JSON.stringify('https://coreapi.deron.nl'),
+	development: JSON.stringify('https://localhost:44357'),
+	// productionTest: JSON.stringify("https://coreapi.derontest.nl"),
+};
+
 module.exports = {
 	context: process.cwd(),
 
@@ -75,6 +81,9 @@ module.exports = {
 			...resolveClientEnv({
 				publicPath: isProd ? config.build.publicPath : config.dev.publicPath,
 			}),
+
+			// API_BASE_URL: API_BASE_URL[argv.mode],
+			API_BASE_URL: API_BASE_URL[process.env.NODE_ENV],
 		}),
 	],
 
