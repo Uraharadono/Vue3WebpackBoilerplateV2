@@ -41,6 +41,7 @@ module.exports = {
 				endOfLine: 'auto',
 			},
 		],
+		'vue/multi-word-component-names': 0,
 	},
 
 	overrides: [
