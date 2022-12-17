@@ -1,22 +1,24 @@
 # Vue 3 Webpack Boilerplate V2
-Vue.js@3.x with webpack
+Vue.js@3.x with webpack **nd not using the Vue CLI.**
 
 A Vue 3 Starter Boilerplate using Webpack 5 instead of CLI . 
-Also used 
-Typescript 4, 
-NProgress,
-Bootstrap 5 (using only css modules we need, not whole bundle and not js stuff), 
-Custom modal component, 
-Custom are you sure you want to delete (modal) component, 
-Custom loader components, 
-Custom auth guard directive logic (using JWT tokens), 
-Axios overhang to look similar to old Ajax,
-Datepicker, 
-Vue Router 4, 
-Pinia 2, 
-Prettier and More.
+Also used/implemented:
+ - Typescript 4
+ - Prettier  
+ - Vue Router 4
+ - NProgress 
+ - Bootstrap 5  - using only CSS modules we need, not whole bundle and not JS stuff)
+ - Custom modal component
+ - Custom are you sure you want to delete (modal) component
+ - Custom loader components
+ - Custom auth guard directive logic (using JWT tokens)
+ - Axios wrapper - wanted it to look similar to old jQuery Ajax and 
+ - Datepicker
+ - Vue Router 4
+ - Pinia 2 
+ - and more to come :)
 
-**And not using the Vue CLI.**
+
 
 ## Architecture
 
