@@ -1,6 +1,6 @@
 <!-- eslint-disable vue/no-v-html, vue/no-use-v-if-with-v-for -->
 <!-- ================================================
--- Idea and inspiration coming from:
+-- A bit of inspiration coming from:
 -- https://codepen.io/ericgruby/pen/MrjgvQ
 ================================================ -->
 <template>
@@ -97,9 +97,9 @@ export default {
 				router.push({ path: item.navComponent });
 			}
 		},
-		// navigateToContent: function (e) {
-		navigateToContent(e) {
-			console.log('tu je');
+		// This method is not needed, as it is never triggered
+		// For my mental notes I am keeping it here
+		navigateToContent: function (e) {
 			if (e.target.dataset.show) {
 				e.preventDefault();
 				this.show = e.target.dataset.show;
