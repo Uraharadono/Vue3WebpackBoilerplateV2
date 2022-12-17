@@ -6,8 +6,9 @@ A Vue 3 Starter Boilerplate using Webpack 5 instead of CLI .
 Also used/implemented:
  - `Typescript 4`
  - `Prettier`
- - `Vue Router 4`
+ - `Vue Router 4` 
  - `Pinia 2` 
+ - `Vuelidate`
  - `NProgress`
  - `Bootstrap 5`  - using only `CSS` modules we need, not whole bundle and not `JS` stuff (we are going to implement those our-self)
  - Custom **Modal component**
