@@ -10,7 +10,7 @@ Also used/implemented:
  - `Pinia 2` 
  - `NProgress`
  - `Bootstrap 5`  - using only `CSS` modules we need, not whole bundle and not `JS` stuff (we are going to implement those our-self)
- - Custom **modal component**
+ - Custom **Modal component**
  - Custom **Are you sure you want to delete (modal) component**
  - Custom **Loader components**
  - Custom **Auth guard directive logic (using JWT tokens)**
@@ -20,6 +20,20 @@ Also used/implemented:
 
 
 (mostly for myself, but you are more than welcome to start using it)
+
+## Commands
+
+```bash
+# Install node package manager dependencies.
+npm install
+
+# Start development server.
+npm run build
+
+# Compile production bundle.
+npm run production
+```
+
 
 ## Architecture
 
@@ -33,17 +47,4 @@ Also used/implemented:
 │  ├─ stores        // Pinia stores.
 │  ├─ typings       // typescript .d.ts files.
 │  └─ views         // pages.
-```
-
-## Commands
-
-```bash
-# Install node package manager dependencies.
-npm install
-
-# Start development server.
-npm run build
-
-# Compile production bundle.
-npm run production
 ```
