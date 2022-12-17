@@ -19,7 +19,12 @@ Also used/implemented:
  - and more to come :)
 
 
-(mostly for myself, but you are more than welcome to start using it)
+## Why I created this repo 
+Mainly I need project that I want to upgrade from `Vue 2` to `Vue 3` but not using the `CLI`. 
+*(`CLI` gave me a lot of issues in past when I was implementing the **Rich Text Editor** and I don't trust it ever since... and I am a bit of control freak when it comes to my code).*
+ 
+I also took some time to have some fun,  to practice,  and mostly for myself to bootstrap my projects. You are more than welcome to start using it if you find it fits your needs. 
+
 
 ## Commands
 
