@@ -38,6 +38,11 @@ const routes: Array<RouteRecordRaw> = [
 				name: 'XhrFileUpload',
 				component: () => import('../views/playground/xhrFileUpload.vue'),
 			},
+			{
+				path: 'modal',
+				name: 'Modal',
+				component: () => import('../views/playground/modal.vue'),
+			},
 		],
 	},
 ];

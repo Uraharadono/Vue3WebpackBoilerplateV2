@@ -20,6 +20,7 @@ export default {
 				{ title: 'Loader 1', content: null, navComponent: 'loader-1' },
 				{ title: 'Loader 2', content: null, navComponent: 'loader-2' },
 				{ title: 'Xhr File Upload', content: null, navComponent: 'xhr-file-upload' },
+				{ title: 'Modal', content: null, navComponent: 'modal' },
 			],
 
 			tabs2: [
