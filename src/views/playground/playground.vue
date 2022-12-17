@@ -21,6 +21,7 @@ export default {
 				{ title: 'Loader 2', content: null, navComponent: 'loader-2' },
 				{ title: 'Xhr File Upload', content: null, navComponent: 'xhr-file-upload' },
 				{ title: 'Modal', content: null, navComponent: 'modal' },
+				{ title: 'Are You Sure Modal', content: null, navComponent: 'are-you-sure-modal' },
 			],
 
 			tabs2: [

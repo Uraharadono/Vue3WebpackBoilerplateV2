@@ -43,6 +43,11 @@ const routes: Array<RouteRecordRaw> = [
 				name: 'Modal',
 				component: () => import('../views/playground/modal.vue'),
 			},
+			{
+				path: 'are-you-sure-modal',
+				name: 'Are you sure modal',
+				component: () => import('../views/playground/areYouSureModal.vue'),
+			},
 		],
 	},
 ];

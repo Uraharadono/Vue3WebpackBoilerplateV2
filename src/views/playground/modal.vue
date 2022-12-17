@@ -22,7 +22,7 @@ import ModalComponent from '@/components/ModalComponent.vue';
 export default {
 	name: 'ModalPlayGround',
 	components: { ModalComponent },
-	emits: ['toggleModalVisibility'],
+	// emits: ['toggleModalVisibility'],
 	data() {
 		return {
 			isModalVisible: false,
