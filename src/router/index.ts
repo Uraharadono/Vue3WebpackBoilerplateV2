@@ -12,6 +12,34 @@ const routes: Array<RouteRecordRaw> = [
 		name: 'About',
 		component: () => import(/* webpackChunkName: "about" */ '../views/about/index.vue'),
 	},
+	{
+		path: '/playground',
+		name: 'Playgrond',
+		component: () =>
+			import(/* webpackChunkName: "playground" */ '../views/playground/playground.vue'),
+		children: [
+			{
+				path: 'toggle',
+				name: 'Toggle',
+				component: () => import('../views/playground/toggle.vue'),
+			},
+			{
+				path: 'loader-1',
+				name: 'Loader1',
+				component: () => import('../views/playground/loader1.vue'),
+			},
+			{
+				path: 'loader-2',
+				name: 'Loader2',
+				component: () => import('../views/playground/loader2.vue'),
+			},
+			{
+				path: 'xhr-file-upload',
+				name: 'XhrFileUpload',
+				component: () => import('../views/playground/xhrFileUpload.vue'),
+			},
+		],
+	},
 ];
 
 const router = createRouter({
