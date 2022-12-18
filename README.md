@@ -12,12 +12,15 @@ Also used/implemented:
  - `NProgress`
  - `Bootstrap 5`  - using only `CSS` modules we need, not whole bundle and not `JS` stuff (we are going to implement those our-self)
  - Custom **Modal component**
+ - Custom **Autocomplete component** - my own authoring, quite simple, lightweight, easy to use
  - Custom **Are you sure you want to delete (modal) component**
  - Custom **Loader components**
  - Custom **Auth guard directive logic (using JWT tokens)**
  - `Axios` wrapper - wanted it to look similar to old `jQuery Ajax` and to support uploading files out of the box
  - `Datepicker`
  - and more to come :)
+
+`(*NOTE*: I have tried and I think I managed to create a push for each one of the items in list above. So in case you need just "Modal component" you can find it in pushes.)`
 
 
 ## Why I created this repo 
