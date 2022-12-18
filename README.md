@@ -12,7 +12,7 @@ Also used/implemented:
  - `NProgress`
  - `Bootstrap 5`  - using only `CSS` modules we need, not whole bundle and not `JS` stuff (we are going to implement those our-self)
  - Custom **Modal component**
- - Custom **Autocomplete component** - my own authoring, quite simple, lightweight, easy to use
+ - Custom **Autocomplete component** - my own authoring, quite simple, lightweight, easy to use. Please credit if you use it. 
  - Custom **Are you sure you want to delete (modal) component**
  - Custom **Loader components**
  - Custom **Auth guard directive logic (using JWT tokens)**
