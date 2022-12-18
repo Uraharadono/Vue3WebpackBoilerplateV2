@@ -48,6 +48,11 @@ const routes: Array<RouteRecordRaw> = [
 				name: 'Are you sure modal',
 				component: () => import('../views/playground/areYouSureModal.vue'),
 			},
+			{
+				path: 'autocomplete',
+				name: 'Autocomplete',
+				component: () => import('../views/playground/autocomplete/autocomplete.vue'),
+			},
 		],
 	},
 ];

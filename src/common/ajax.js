@@ -62,8 +62,13 @@ function createRequest(url, data, type, customHeaders = {}, responseType) {
 function get(url, data = {}, customHeaders = {}) {
 	const request = Object.assign({}, createRequest(url, null, 'GET', customHeaders), {
 		params: data,
-		paramsSerializer: (params) => stringify(params, { allowDots: true, skipNulls: true }),
+		// paramsSerializer: (params) => stringify(params, { allowDots: true, skipNulls: true }),
+		paramsSerializer: {
+			// This was strange error, found this fix here: https://github.com/axios/axios/issues/5142#issuecomment-1282203048
+			serialize: (params) => stringify(params, { allowDots: true, skipNulls: true }),
+		},
 	});
+	console.log(request);
 	return axios(request)
 		.then((response) => response.data)
 		.catch(handleError);

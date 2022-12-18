@@ -22,6 +22,7 @@ export default {
 				{ title: 'Xhr File Upload', content: null, navComponent: 'xhr-file-upload' },
 				{ title: 'Modal', content: null, navComponent: 'modal' },
 				{ title: 'Are You Sure Modal', content: null, navComponent: 'are-you-sure-modal' },
+				{ title: 'Autocomplete', content: null, navComponent: 'autocomplete' },
 			],
 
 			tabs2: [
