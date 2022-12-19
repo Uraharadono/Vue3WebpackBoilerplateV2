@@ -12,7 +12,7 @@ Also used/implemented:
  - `NProgress`
  - `Bootstrap 5`  - using only `CSS` modules we need, not whole bundle and not `JS` stuff (we are going to implement those our-self)
  - Custom **Modal component**
- - Custom **Xhr File Upload component** - this component supports quite the amount of history while also using my implementation of 'Form Post' to post data to server
+ - Custom **Xhr File Upload component** - this component supports quite the amount of history while also using my implementation of `Form Post` to post data to server
  - Custom **Autocomplete component** - my own authoring, quite simple, lightweight, easy to use. Please credit if you use it. 
  - Custom **Are you sure you want to delete (modal) component**
  - Custom **Loader components**
