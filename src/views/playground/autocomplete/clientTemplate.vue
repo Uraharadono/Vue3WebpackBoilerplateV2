@@ -1,6 +1,6 @@
 <template>
 	<a class="fake-link">
-		<b>{{ item.id }}</b>
+		<b>{{ item.id }}</b> &nbsp;
 		<span>{{ item.name }}</span>
 		<!-- <abbr>{{ item.description }}</abbr> -->
 	</a>

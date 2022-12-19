@@ -21,6 +21,7 @@ import Autocomplete from '@/components/Autocomplete/Autocomplete.vue';
 import ClientTemplate from './clientTemplate.vue';
 import { shallowRef } from 'vue';
 import ajax from '@/common/ajax';
+import clientSuggestions from './client-suggestions.js';
 
 export default {
 	name: 'AutocompletePlayGround',
@@ -55,18 +56,24 @@ export default {
 			return '';
 		},
 		updateClientSuggestions(text) {
-			ajax
-				.get('/api/SearchItems/GetClients', { searchParam: text })
-				.then((response) => {
-					console.log(response);
-					this.clientItems = response;
-				})
-				.catch((e) => {
-					console.error(e);
-					//this.$swal(toastConfig('Error fetching data !', 'error'));
-				});
+			this.clientItems = clientSuggestions.filter(
+				(item) => item.name.toLowerCase().indexOf(text.toLowerCase()) > 1
+			);
+			console.log(this.clientItems);
+			// Usage with API calls
+			//ajax
+			//	.get('/api/SearchItems/GetClients', { searchParam: text })
+			//	.then((response) => {
+			//		console.log(response);
+			//		this.clientItems = response;
+			//	})
+			//	.catch((e) => {
+			//		console.error(e);
+			//		//this.$swal(toastConfig('Error fetching data !', 'error'));
+			//	});
 		},
 
+		// This method is used to pre-fill already selected client
 		getClientField() {
 			// Get client field into autocomplete
 			ajax
