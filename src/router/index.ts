@@ -24,6 +24,11 @@ const routes: Array<RouteRecordRaw> = [
 				component: () => import('../views/playground/toggle.vue'),
 			},
 			{
+				path: 'content-tabs',
+				name: 'ContentTabs',
+				component: () => import('../views/playground/contentTabs.vue'),
+			},
+			{
 				path: 'loader-1',
 				name: 'Loader1',
 				component: () => import('../views/playground/loader1.vue'),

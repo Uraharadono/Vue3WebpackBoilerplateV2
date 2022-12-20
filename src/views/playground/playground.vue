@@ -2,8 +2,6 @@
 	<div>
 		<h3>Tabs using navigation</h3>
 		<Tabs :tabs="tabs" :is-routed="true" />
-		<h3>Tabs using component content</h3>
-		<Tabs :tabs="tabs2" :is-routed="false" />
 	</div>
 </template>
 
@@ -23,25 +21,7 @@ export default {
 				{ title: 'Modal', content: null, navComponent: 'modal' },
 				{ title: 'Are You Sure Modal', content: null, navComponent: 'are-you-sure-modal' },
 				{ title: 'Autocomplete', content: null, navComponent: 'autocomplete' },
-			],
-
-			tabs2: [
-				{
-					title: 'Pictures',
-					content: 'Pictures content',
-				},
-				{
-					title: 'Music',
-					content: 'Music content. Wanna see some <a href="#" data-show="3">Documents</a> content?',
-				},
-				{
-					title: 'Videos',
-					content: 'Videos content. <a href="#" data-alert="VIDEOS!!!">Alert videos</a>',
-				},
-				{
-					title: 'Documents',
-					content: 'Documents content. Wanna see some <a href="#" data-show="1">Music</a> content?',
-				},
+				{ title: 'Tabs (content)', content: null, navComponent: 'content-tabs' },
 			],
 		};
 	},

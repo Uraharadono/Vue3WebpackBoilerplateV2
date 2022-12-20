@@ -11,11 +11,13 @@ Also used/implemented:
  - `Vuelidate`
  - `NProgress`
  - `Bootstrap 5`  - using only `CSS` modules we need, not whole bundle and not `JS` stuff (we are going to implement those our-self)
- - Custom **Modal component**
+ - Custom **Tabs component** - With support for both **route (navigation)** and **component content** based tab content. My own authoring, quite simple, lightweight, easy to use. Please credit if you use it. 
  - Custom **Xhr File Upload component** - this component supports quite the amount of history while also using my implementation of `Form Post` to post data to server
  - Custom **Autocomplete component** - my own authoring, quite simple, lightweight, easy to use. Please credit if you use it. 
+ - Custom **Toggle component**
+ - Custom **Modal component**
  - Custom **Are you sure you want to delete (modal) component**
- - Custom **Loader components**
+ - Custom **Loader 1 & 2 components**
  - Custom **Auth guard directive logic (using JWT tokens)**
  - `Axios` wrapper - wanted it to look similar to old `jQuery Ajax` and to support uploading files out of the box
  - `Datepicker`

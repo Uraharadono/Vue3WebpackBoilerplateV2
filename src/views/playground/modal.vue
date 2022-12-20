@@ -12,7 +12,7 @@
 			</template>
 		</ModalComponent>
 
-		<button @click="toggleModalVisibility">Toggle modal</button>
+		<button class="btn btn-primary" @click="toggleModalVisibility">Toggle modal</button>
 	</div>
 </template>
 

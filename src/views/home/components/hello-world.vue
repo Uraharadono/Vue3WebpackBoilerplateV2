@@ -17,7 +17,7 @@
 					<div class="list-group">
 						<!--<a href="#" class="list-group-item list-group-item-action">
 					<div class="d-flex w-100 justify-content-between">
-						<h5 class="mb-1">List group item heading</h5>
+						<h5 class="mb-1 bold-revert">List group item heading</h5>
 						<small>3 days ago</small>
 					</div>
 					<p class="mb-1">Some placeholder content in a paragraph.</p>
@@ -25,45 +25,49 @@
 				</a>-->
 						<a href="#" class="list-group-item list-group-item-action">
 							<div class="d-flex w-100 justify-content-between">
-								<h5 class="mb-1">Typescript 4</h5>
-							</div>
-							<p class="mb-1"></p>
-						</a>
-						<a href="#" class="list-group-item list-group-item-action">
-							<div class="d-flex w-100 justify-content-between"><h5 class="mb-1">Prettier</h5></div>
-							<p class="mb-1"></p>
-						</a>
-						<a href="#" class="list-group-item list-group-item-action">
-							<div class="d-flex w-100 justify-content-between">
-								<h5 class="mb-1">Vue Router 4</h5>
-							</div>
-							<p class="mb-1"></p>
-						</a>
-						<a href="#" class="list-group-item list-group-item-action">
-							<div class="d-flex w-100 justify-content-between"><h5 class="mb-1">Pinia 2</h5></div>
-							<p class="mb-1"></p>
-						</a>
-						<a href="#" class="list-group-item list-group-item-action">
-							<div class="d-flex w-100 justify-content-between">
-								<h5 class="mb-1">Vuelidate</h5>
+								<h5 class="mb-1 bold-revert">Typescript 4</h5>
 							</div>
 							<p class="mb-1"></p>
 						</a>
 						<a href="#" class="list-group-item list-group-item-action">
 							<div class="d-flex w-100 justify-content-between">
-								<h5 class="mb-1">NProgress</h5>
+								<h5 class="mb-1 bold-revert">Prettier</h5>
 							</div>
 							<p class="mb-1"></p>
 						</a>
 						<a href="#" class="list-group-item list-group-item-action">
 							<div class="d-flex w-100 justify-content-between">
-								<h5 class="mb-1">Datepicker</h5>
+								<h5 class="mb-1 bold-revert">Vue Router 4</h5>
 							</div>
 							<p class="mb-1"></p>
 						</a>
 						<a href="#" class="list-group-item list-group-item-action">
 							<div class="d-flex w-100 justify-content-between">
-								<h5 class="mb-1">Bootstrap 5</h5>
+								<h5 class="mb-1 bold-revert">Pinia 2</h5>
+							</div>
+							<p class="mb-1"></p>
+						</a>
+						<a href="#" class="list-group-item list-group-item-action">
+							<div class="d-flex w-100 justify-content-between">
+								<h5 class="mb-1 bold-revert">Vuelidate</h5>
+							</div>
+							<p class="mb-1"></p>
+						</a>
+						<a href="#" class="list-group-item list-group-item-action">
+							<div class="d-flex w-100 justify-content-between">
+								<h5 class="mb-1 bold-revert">NProgress</h5>
+							</div>
+							<p class="mb-1"></p>
+						</a>
+						<a href="#" class="list-group-item list-group-item-action">
+							<div class="d-flex w-100 justify-content-between">
+								<h5 class="mb-1 bold-revert">Datepicker</h5>
+							</div>
+							<p class="mb-1"></p>
+						</a>
+						<a href="#" class="list-group-item list-group-item-action">
+							<div class="d-flex w-100 justify-content-between">
+								<h5 class="mb-1 bold-revert">Bootstrap 5</h5>
 							</div>
 							<p class="mb-1">
 								Using only CSS modules we need, not whole bundle and not JS stuff (we are going to
@@ -72,18 +76,18 @@
 						</a>
 						<a href="#" class="list-group-item list-group-item-action">
 							<div class="d-flex w-100 justify-content-between">
-								<h5 class="mb-1">Axios wrapper</h5>
+								<h5 class="mb-1 bold-revert">Axios wrapper</h5>
 							</div>
 							<p class="mb-1">
 								Wanted it to look similar to old jQuery Ajax and to support uploading files out of
 								the box
 							</p>
 						</a>
-						<a href="#" class="list-group-item list-group-item-action">
+						<a class="list-group-item list-group-item-action">
 							<div class="d-flex w-100 justify-content-between">
-								<h5 class="mb-1">FontAwesome icons</h5>
+								<h5 class="mb-1 bold-revert">FontAwesome icons</h5>
 							</div>
-							<p class="mb-1">
+							<p class="mb-1 text-start">
 								I have not implemented FontAwesome using this way:
 								https://fontawesome.com/docs/web/use-with/vue/ even tho merging and combining icons
 								seems like great idea, because I want to be able to use icons dynamically (read
@@ -99,52 +103,97 @@
 				</div>
 				<div class="col">
 					<div class="alert alert-info" role="alert">My custom components</div>
+					<i>Click component to navigate to it's showroom.</i>
 					<div class="list-group">
-						<a href="#" class="list-group-item list-group-item-action">
+						<router-link
+							class="list-group-item list-group-item-action"
+							to="/playground/content-tabs"
+						>
 							<div class="d-flex w-100 justify-content-between">
-								<h5 class="mb-1">Custom <strong>Modal component</strong></h5>
+								<h5 class="mb-1">Custom <strong>Tabs component</strong></h5>
+								<i class="fa-solid fa-link text-primary"></i>
 							</div>
-							<p class="mb-1"></p>
-						</a>
-						<a href="#" class="list-group-item list-group-item-action">
+							<p class="mb-1 text-start">
+								With support for both route (navigation) and component content based tab content. My
+								own authoring, quite simple, lightweight, easy to use. <br />
+								Page that contains Demo of other components actually uses
+								<bold>route content</bold> and this one uses content.<br />
+								Please credit if you use it.
+							</p>
+						</router-link>
+						<router-link
+							to="/playground/xhr-file-upload"
+							class="list-group-item list-group-item-action"
+						>
 							<div class="d-flex w-100 justify-content-between">
 								<h5 class="mb-1">Custom <strong>Xhr File Upload</strong> component</h5>
+								<i class="fa-solid fa-link text-primary"></i>
 							</div>
-							<p class="mb-1">
+							<p class="mb-1 text-start">
 								This component supports quite the amount of history while also using my
 								implementation of 'Form Post' to post data to server
 							</p>
-						</a>
-						<a href="#" class="list-group-item list-group-item-action">
+						</router-link>
+						<router-link
+							to="/playground/autocomplete"
+							class="list-group-item list-group-item-action"
+						>
 							<div class="d-flex w-100 justify-content-between">
-								<h5 class="mb-1">Custom <strong>Autocomplete</strong> component</h5>
+								<h5 class="mb-1 text-start">Custom <strong>Autocomplete</strong> component</h5>
+								<i class="fa-solid fa-link text-primary"></i>
 							</div>
-							<p class="mb-1">
+							<p class="mb-1 text-start">
 								My own library, quite simple, lightweight, easy to use. Please credit if you use it.
 							</p>
-						</a>
-						<a href="#" class="list-group-item list-group-item-action">
+						</router-link>
+						<router-link to="/playground/toggle" class="list-group-item list-group-item-action">
 							<div class="d-flex w-100 justify-content-between">
-								<h5 class="mb-1">
+								<h5 class="mb-1 text-start">Custom <strong>Toggle</strong> component</h5>
+								<i class="fa-solid fa-link text-primary"></i>
+							</div>
+							<p class="mb-1 text-start"></p>
+						</router-link>
+						<router-link class="list-group-item list-group-item-action" to="/playground/modal">
+							<div class="d-flex w-100 justify-content-between">
+								<h5 class="mb-1">Custom <strong>Modal component</strong></h5>
+								<i class="fa-solid fa-link text-primary"></i>
+							</div>
+							<p class="mb-1"></p>
+						</router-link>
+						<router-link
+							to="/playground/are-you-sure-modal"
+							class="list-group-item list-group-item-action"
+						>
+							<div class="d-flex w-100 justify-content-between">
+								<h5 class="mb-1 text-start">
 									Custom <strong>Are you sure you want to delete (modal)</strong> component
 								</h5>
+								<i class="fa-solid fa-link text-primary"></i>
 							</div>
 							<p class="mb-1"></p>
-						</a>
-						<a href="#" class="list-group-item list-group-item-action">
+						</router-link>
+						<router-link to="/playground/loader-1" class="list-group-item list-group-item-action">
 							<div class="d-flex w-100 justify-content-between">
-								<h5 class="mb-1">Custom <strong>Loader</strong> components</h5>
+								<h5 class="mb-1">Custom <strong>Loader 1</strong> components</h5>
+								<i class="fa-solid fa-link text-primary"></i>
 							</div>
 							<p class="mb-1"></p>
-						</a>
-						<a href="#" class="list-group-item list-group-item-action">
+						</router-link>
+						<router-link to="/playground/loader-2" class="list-group-item list-group-item-action">
 							<div class="d-flex w-100 justify-content-between">
-								<h5 class="mb-1">
+								<h5 class="mb-1">Custom <strong>Loader 2</strong> components</h5>
+								<i class="fa-solid fa-link text-primary"></i>
+							</div>
+							<p class="mb-1"></p>
+						</router-link>
+						<router-link to="/playground" class="list-group-item list-group-item-action">
+							<div class="d-flex w-100 justify-content-between">
+								<h5 class="mb-1 text-start">
 									Custom <strong>Auth guard</strong> component guard logic (using JWT tokens)
 								</h5>
 							</div>
 							<p class="mb-1"></p>
-						</a>
+						</router-link>
 					</div>
 				</div>
 			</div>
