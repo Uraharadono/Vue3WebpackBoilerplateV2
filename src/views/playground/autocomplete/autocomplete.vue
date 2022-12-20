@@ -21,7 +21,7 @@ import Autocomplete from '@/components/Autocomplete/Autocomplete.vue';
 import ClientTemplate from './clientTemplate.vue';
 import { shallowRef } from 'vue';
 import ajax from '@/common/ajax';
-import clientSuggestions from './client-suggestions.js';
+import clientSuggestions from './client-suggestions.ts';
 
 export default {
 	name: 'AutocompletePlayGround',
