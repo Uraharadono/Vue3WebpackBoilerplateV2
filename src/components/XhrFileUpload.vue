@@ -42,7 +42,7 @@ I got idea for this logic and backend one from here: https://github.com/herbat73
 						<ul class="list-group">
 							<li v-for="(item, ix) in progressIndicators" :key="ix" class="list-group-item d-flex">
 								<div class="col-1 list-image img-block">
-									<font-awesome-icon :icon="['fa', 'cloud-upload-alt']" size="2x" />
+									<i class="fa-solid fa-cloud-arrow-up fa-2x"></i>
 								</div>
 								<div class="col-10 list-info">
 									<div class="list-title-block">
@@ -69,7 +69,7 @@ I got idea for this logic and backend one from here: https://github.com/herbat73
 									@click.prevent="cancelUpload(item)"
 								>
 									<span class="btn-icon">
-										<font-awesome-icon :icon="['fa', 'times']" />
+										<i class="fa-solid fa-xmark"></i>
 									</span>
 								</button>
 							</li>
@@ -89,7 +89,7 @@ I got idea for this logic and backend one from here: https://github.com/herbat73
 								@click="visitUrl(item.downloadPage)"
 							>
 								<div class="col-1 list-image img-block">
-									<font-awesome-icon :icon="['fa', 'cloud-upload-alt']" size="2x" />
+									<i class="fa-solid fa-cloud-arrow-up fa-2x"></i>
 								</div>
 								<div class="col-10 list-info">
 									<div class="list-title-block">
@@ -99,9 +99,9 @@ I got idea for this logic and backend one from here: https://github.com/herbat73
 									</div>
 									Upload Complete!
 								</div>
-								<button class="btn btn-outline-success btn-square rounded-pill mt-3 mb-3">
+								<button class="btn btn-success btn-square rounded-pill mt-3 mb-3">
 									<span class="btn-icon">
-										<font-awesome-icon :icon="['fa', 'check']" />
+										<i class="fa-solid fa-check"></i>
 									</span>
 								</button>
 							</li>

@@ -57,6 +57,12 @@
 						</a>
 						<a href="#" class="list-group-item list-group-item-action">
 							<div class="d-flex w-100 justify-content-between">
+								<h5 class="mb-1">Datepicker</h5>
+							</div>
+							<p class="mb-1"></p>
+						</a>
+						<a href="#" class="list-group-item list-group-item-action">
+							<div class="d-flex w-100 justify-content-between">
 								<h5 class="mb-1">Bootstrap 5</h5>
 							</div>
 							<p class="mb-1">
@@ -75,14 +81,23 @@
 						</a>
 						<a href="#" class="list-group-item list-group-item-action">
 							<div class="d-flex w-100 justify-content-between">
-								<h5 class="mb-1">Datepicker</h5>
+								<h5 class="mb-1">FontAwesome icons</h5>
 							</div>
-							<p class="mb-1"></p>
+							<p class="mb-1">
+								I have not implemented FontAwesome using this way:
+								https://fontawesome.com/docs/web/use-with/vue/ even tho merging and combining icons
+								seems like great idea, because I want to be able to use icons dynamically (read
+								inside strings). I have used modified version of:
+								https://fontawesome.com/docs/web/setup/host-yourself/webfonts to load fonts myself.
+								Instead of what is shown in tutorial, I have installed FontAwesome from npm
+								(https://fontawesome.com/docs/web/setup/packages) and imported the .scss files
+								myself. Budle size is 1Mb bigger, and with my experience from before, after usage of
+								~20ish .svg icon, it bloats to almost same size.
+							</p>
 						</a>
 					</div>
 				</div>
 				<div class="col">
-					<!--<bold><h3>My custom components</h3></bold>-->
 					<div class="alert alert-info" role="alert">My custom components</div>
 					<div class="list-group">
 						<a href="#" class="list-group-item list-group-item-action">

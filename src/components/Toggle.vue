@@ -6,21 +6,19 @@
 	<!-- <div>
     <button v-if="value" class="btn btn-outline-light btn-square" @click="toggle()">
       <span class="btn-icon">
-        <font-awesome-icon icon="sort-down" />
+        <i class="fa-solid fa-sort-down" /></i>
       </span>
     </button>
     <button v-else class="btn btn-outline-light btn-square" @click="toggle()">
       <span class="btn-icon">
-        <font-awesome-icon icon="sort-up" />
+        <i class="fa-solid fa-sort-up" /></i>
       </span>
     </button>
   </div> -->
 
 	<div>
-		<!--<font-awesome-icon v-if="toggled" icon="sort-down" @click="toggle()" />
-		<font-awesome-icon v-else icon="caret-right" @click="toggle()" />-->
-		<span v-if="toggleState" @click="toggle()"> ˄ </span>
-		<span v-else @click="toggle()"> ˅ </span>
+		<i v-if="toggleState" class="fa-solid fa-sort-down" @click="toggle()"> </i>
+		<i v-else class="fa-solid fa-caret-right" @click="toggle()"> </i>
 	</div>
 </template>
 

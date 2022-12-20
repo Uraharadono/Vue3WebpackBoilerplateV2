@@ -1,0 +1,44 @@
+// Read more about font-awesome imports: https://fontawesome.com/docs/web/use-with/scss
+
+// ================================================================================
+// Everything
+// ================================================================================
+
+// @import '../../../node_modules/@fortawesome/fontawesome-free/css/all.css'; // No need for all 
+
+// ================================================================================
+// Importing core styling file
+// this is basically including all of the utility classes like "functions", "variables", "mixins" etc.
+// ================================================================================
+
+@import "../../../node_modules/@fortawesome/fontawesome-free/scss/fontawesome.scss";
+
+
+
+// ================================================================================
+// Change variables
+// ================================================================================
+
+// If left to default, variables are going to point to this folder
+// This will cause errors with Icon styles (added below) like this one::after
+// Error: Can't resolve '../webfonts/fa-regular-400.woff2' in 'C:\GitHub\Vue3WebpackBoilerplateV2\src\assets\styles'
+// issue is their pathing as I said above as it will look for "fa-regular-400.woff2" in "./assests" instead of node_modules folder
+// found issue here: https://stackoverflow.com/a/63804707/4267429
+$fa-font-path: '~@fortawesome/fontawesome-free/webfonts';
+
+
+// ================================================================================
+// Icon styles - Styles of icons that we need
+// ================================================================================
+
+@import "../../../node_modules/@fortawesome/fontawesome-free/scss/regular.scss";
+@import "../../../node_modules/@fortawesome/fontawesome-free/scss/solid.scss";
+@import "../../../node_modules/@fortawesome/fontawesome-free/scss/brands.scss";
+// @import "../../../node_modules/@fortawesome/fontawesome-freescss/sharp-solid.scss"; // this is for premuim font-awesome
+
+// ================================================================================
+// PREMIUM ONLY: Our project needs Duotone ? - which requires both of the following files
+// ================================================================================
+
+//@import "../../../node_modules/@fortawesome/fontawesome-free/scss/duotone.scss";
+//@import "../../../node_modules/@fortawesome/fontawesome-free/scss/_duotone-icons.scss";

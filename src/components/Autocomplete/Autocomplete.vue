@@ -6,7 +6,7 @@
 			:class="{ 'v-autocomplete-selected': value }"
 		>
 			<div class="prefix-icon">
-				<font-awesome-icon class="text-end" icon="search" />
+				<i class="fa-solid fa-magnifying-glass text-end"></i>
 			</div>
 
 			<input
@@ -196,5 +196,35 @@ export default {
 }
 .v-autocomplete .v-autocomplete-list .v-autocomplete-list-item {
 	cursor: pointer;
+}
+
+/* This should probably be somwhere in dasbboard.scss or something*/
+.dataTables_filter .typeahead__field .prefix-icon ~ input,
+.dataTables_filter .with-prefix-icon input,
+.typeahead__field .dataTables_filter .prefix-icon ~ input,
+.typeahead__field .prefix-icon ~ .form-control,
+.with-prefix-icon .dataTables_filter input,
+.with-prefix-icon .form-control {
+	padding-left: 2.5rem;
+}
+
+.with-prefix-icon .prefix-icon,
+.with-prefix-icon .suffix-icon,
+.with-suffix-icon .prefix-icon,
+.with-suffix-icon .suffix-icon {
+	align-items: center;
+	color: #a8a8a8;
+	display: flex;
+	height: 100%;
+	justify-content: center;
+	pointer-events: none;
+	position: absolute;
+	width: 2.5rem;
+	top: 0;
+}
+
+.with-prefix-icon .prefix-icon,
+.with-suffix-icon .prefix-icon {
+	left: 0;
 }
 </style>

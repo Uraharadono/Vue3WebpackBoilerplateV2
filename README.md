@@ -19,6 +19,12 @@ Also used/implemented:
  - Custom **Auth guard directive logic (using JWT tokens)**
  - `Axios` wrapper - wanted it to look similar to old `jQuery Ajax` and to support uploading files out of the box
  - `Datepicker`
+ - `FontAwesome` icons - I have not implemented `FontAwesome` using this way: https://fontawesome.com/docs/web/use-with/vue/
+	even tho' merging and combining icons seems like great idea, because I want to be able to use icons dynamically (read inside strings).
+	I have used modified version of: https://fontawesome.com/docs/web/setup/host-yourself/webfonts
+	to load fonts myself. Instead of what is shown in tutorial, I have installed `FontAwesome` from `npm` (https://fontawesome.com/docs/web/setup/packages)
+	and imported the `.scss` files myself.
+	Bundle size is *1Mb bigger*, and with my experience from before, after usage of ~20ish `.svg` icons, it bloats to almost same size.
  - and more to come :)
 
 `(*NOTE*: I have tried and I think I managed to create a push for each one of the items in list above. So in case you need just "Modal component" you can find it in pushes.)`
