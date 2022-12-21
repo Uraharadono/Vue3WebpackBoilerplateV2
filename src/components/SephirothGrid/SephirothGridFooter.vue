@@ -8,7 +8,7 @@
         v-bind:title="this.settings.culture.refresh"
         class="btn btn-light btn-sm"
       >
-        <font-awesome-icon icon="redo-alt" />
+        <i class="fa-solid fa-rotate-right"></i>
       </button>
 
       <button
@@ -17,24 +17,24 @@
         v-bind:title="this.settings.culture.exportToExcel"
         class="btn btn-light btn-sm"
       >
-        <font-awesome-icon icon="file-excel" />
+        <i class="fa-solid fa-file-excel"></i>
       </button>
 
       <template >
         <button type="button" v-on:click="$parent.displayFirst" v-bind:title="this.settings.culture.first" class="btn btn-light btn">
-          <font-awesome-icon icon="step-backward" />
+          <i class="fa-solid fa-backward-step"></i>
         </button>
 
         <button type="button" v-on:click="$parent.displayPrevious" v-bind:title="this.settings.culture.previous" class="btn btn-light btn-sm">
-          <font-awesome-icon icon="chevron-left" />
+          <i class="fa-solid fa-chevron-left"></i>
         </button>
 
         <button type="button" v-on:click="$parent.displayNext" v-bind:title="this.settings.culture.next" class="btn btn-light btn-sm">
-          <font-awesome-icon icon="chevron-right" />
+          <i class="fa-solid fa-chevron-right"></i>
         </button>
 
         <button type="button" v-on:click="$parent.displayLast" v-bind:title="this.settings.culture.last" class="btn btn-light btn-sm">
-          <font-awesome-icon icon="step-forward" />
+          <i class="fa-solid fa-forward-step"></i>
         </button>
       </template> -->
 
@@ -48,11 +48,13 @@
 						:title="action.title"
 						@click="action.action"
 					>
-						<font-awesome-icon :icon="['fa', action.icon]" />
+						<!--<font-awesome-icon :icon="['fa', action.icon]" />-->
+						<!--eslint-disable-next-line vue/no-v-html-->
+						<i v-html="action.icon"></i>
 					</div>
 
 					<div class="paginate_button" :title="settings.culture.refresh" @click="$parent.refresh">
-						<font-awesome-icon icon="redo-alt" />
+						<i class="fa-solid fa-rotate-right"></i>
 					</div>
 
 					<div
@@ -60,7 +62,7 @@
 						:title="settings.culture.columnManagement"
 						@click="$parent.openColumnSettingsModal"
 					>
-						<font-awesome-icon icon="cog" />
+						<i class="fa-solid fa-gear"></i>
 					</div>
 
 					<div
@@ -68,7 +70,7 @@
 						:title="settings.culture.exportToExcel"
 						@click="$parent.exportToExcel"
 					>
-						<font-awesome-icon icon="file-excel" />
+						<i class="fa-solid fa-file-excel"></i>
 					</div>
 
 					<div
@@ -76,7 +78,7 @@
 						:title="settings.culture.first"
 						@click="$parent.displayFirst"
 					>
-						<font-awesome-icon icon="step-backward" />
+						<i class="fa-solid fa-backward-step"></i>
 					</div>
 
 					<div
@@ -84,15 +86,15 @@
 						:title="settings.culture.previous"
 						@click="$parent.displayPrevious"
 					>
-						<font-awesome-icon icon="chevron-left" />
+						<i class="fa-solid fa-chevron-left"></i>
 					</div>
 
 					<div class="paginate_button" :title="settings.culture.next" @click="$parent.displayNext">
-						<font-awesome-icon icon="chevron-right" />
+						<i class="fa-solid fa-chevron-right"></i>
 					</div>
 
 					<div class="paginate_button" :title="settings.culture.last" @click="$parent.displayLast">
-						<font-awesome-icon icon="step-forward" />
+						<i class="fa-solid fa-forward-step"></i>
 					</div>
 				</div>
 			</div>
@@ -106,7 +108,7 @@
             v-bind:title="this.settings.culture.refresh"
           >
             <span class="page-link">
-              <font-awesome-icon icon="redo-alt" />
+              <i class="fa-solid fa-rotate-right"></i>
             </span>
           </li>
 
@@ -116,7 +118,7 @@
             v-bind:title="this.settings.culture.exportToExcel"
           >
             <span class="page-link">
-              <font-awesome-icon icon="file-excel" />
+              <i class="fa-solid fa-file-excel"></i>
             </span>
           </li>
 
@@ -126,7 +128,7 @@
             v-bind:title="this.settings.culture.first"
           >
             <span class="page-link">
-              <font-awesome-icon icon="step-backward" />
+              <i class="fa-solid fa-backward-step"></i>
             </span>
           </li>
 
@@ -136,7 +138,7 @@
             v-bind:title="this.settings.culture.previous"
           >
             <span class="page-link">
-              <font-awesome-icon icon="chevron-left" />
+              <i class="fa-solid fa-chevron-left"></i>
             </span>
           </li>
 
@@ -146,7 +148,7 @@
             v-bind:title="this.settings.culture.last"
           >
             <span class="page-link">
-              <font-awesome-icon icon="chevron-right" />
+              <i class="fa-solid fa-chevron-right"></i>
             </span>
           </li>
 
@@ -156,7 +158,7 @@
             v-bind:title="this.settings.culture.last"
           >
             <span class="page-link">
-              <font-awesome-icon icon="step-forward" />
+              <i class="fa-solid fa-forward-step"></i>
             </span>
           </li>
         </ul>

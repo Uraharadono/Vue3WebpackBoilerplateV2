@@ -50,7 +50,9 @@
 					type="button"
 					@click.prevent="method.func(item)"
 				>
-					<font-awesome-icon :icon="['fa', method.methodIcon]" />
+					<!--<font-awesome-icon :icon="['fa', method.methodIcon]" />-->
+					<!--eslint-disable-next-line vue/no-v-html-->
+					<i v-html="method.methodIcon"></i>
 				</button>
 			</div>
 

@@ -18,11 +18,14 @@
 			</div>
 
 			<div v-show="column.isSortable" class="col-1 float-end">
+				<!--eslint-disable-next-line vue/no-v-html-->
+				<span v-html="displayArrow()"></span>
+
+				<!-- In case you can't use icons with string interpolation -->
 				<!--Note: I have to have this a bit more complex logic for displaying "Up-Down" sorting indicatior icons 
               because I cannot use string interpolation with font-awesome-icon -.-'' -->
-				<!-- <span v-html="displayArrow()"></span> -->
-				<font-awesome-icon v-if="displayArrow()" icon="sort-up" />
-				<font-awesome-icon v-else icon="sort-down" />
+				<!--<font-awesome-icon v-if="displayArrow()" icon="sort-up" />
+				<font-awesome-icon v-else icon="sort-down" />-->
 			</div>
 		</div>
 
@@ -136,16 +139,23 @@ export default {
 			}
 			// **************************************************
 
-			// **************************************************
+			// ******************* In case you can do icons in string interpolation *******************************
+			if (this.parameters.sort.direction === 0) {
+				return '<i class="fa-solid fa-sort-down"></i>';
+			} else {
+				return '<i class="fa-solid fa-sort-up"></i>';
+			}
+
+			// ******************* In case you can't do icons in string interpolation *******************************
 			/* Note: I have to have this a bit more complex logic for displaying "Up-Down" sorting indicatior icons
                because I cannot use string interpolation with font-awesome-icon -.-'' */
-			if (this.parameters.sort.direction === 0) {
-				// return '<font-awesome-icon icon="sort-down" />';
-				return true;
-			} else {
-				// return '<font-awesome-icon icon="sort-up" />';
-				return false;
-			}
+			//if (this.parameters.sort.direction === 0) {
+			//	// return '<font-awesome-icon icon="sort-down" />';
+			//	return true;
+			//} else {
+			//	// return '<font-awesome-icon icon="sort-up" />';
+			//	return false;
+			//}
 			// **************************************************
 		},
 

@@ -18,11 +18,14 @@
 							style="cursor: pointer"
 							@click="toggleColumnVisibility(column)"
 						>
+							<!--eslint-disable-next-line vue/no-v-html-->
+							<span v-html="displayCheckbox(column)"></span>
+
+							<!-- In case you can't use icons with string interpolation -->
 							<!--Note: I have to have this a bit more complex logic for displaying "Up-Down" sorting indicatior icons
                         because I cannot use string interpolation with font-awesome-icon -.-'' -->
-							<!-- <span v-html="displayCheckbox(column)"></span> -->
-							<font-awesome-icon v-if="displayCheckbox(column)" icon="square" />
-							<font-awesome-icon v-else icon="check-square" />
+							<!--<font-awesome-icon v-if="displayCheckbox(column)" icon="square" />
+							<font-awesome-icon v-else icon="check-square" />-->
 
 							{{ column.title }}
 						</li>
@@ -85,9 +88,8 @@
 
 <script>
 /* eslint-disable vue/no-mutating-props */
-import Vue from 'vue';
 import ajax from '@/common/ajax';
-import ComponentLoader from '@/components/ComponentLoader.vue.vue';
+import ComponentLoader from '@/components/ComponentLoader.vue';
 import { isNullOrWs } from '@/common/methods';
 
 import SephirothGridHeader from './SephirothGridHeader.vue';
@@ -150,25 +152,25 @@ export default {
 
 		// **************************************************
 		if (this.settings.pageSizes === undefined) {
-			Vue.set(this.settings, 'pageSizes', [10, 20, 50, 100, 200, 500, 1000]);
+			this.settings['pageSizes'] = [10, 20, 50, 100, 200, 500, 1000];
 		}
 		// **************************************************
 
 		// **************************************************
 		if (this.settings.pageSize === undefined) {
-			Vue.set(this.settings, 'pageSize', this.settings.pageSizes[0]);
+			this.settings['pageSize'] = this.settings.pageSizes[0];
 		}
 		// **************************************************
 
 		// **************************************************
 		if (this.settings.items === undefined) {
-			Vue.set(this.settings, 'items', null);
+			this.settings['items'] = null;
 		}
 		// **************************************************
 
 		// **************************************************
 		if (this.settings.isSuccess === undefined) {
-			Vue.set(this.settings, 'isSuccess', false);
+			this.settings['isSuccess'] = false;
 		} else {
 			if (!(this.settings.isSuccess === true || this.settings.isSuccess === false)) {
 				this.settings.isSuccess = false;
@@ -178,25 +180,25 @@ export default {
 
 		// **************************************************
 		if (this.settings.errorMessages === undefined) {
-			Vue.set(this.settings, 'errorMessages', null);
+			this.settings['errorMessages'] = null;
 		}
 		// **************************************************
 
 		// **************************************************
 		if (this.settings.hiddenMessages === undefined) {
-			Vue.set(this.settings, 'hiddenMessages', null);
+			this.settings['hiddenMessages'] = null;
 		}
 		// **************************************************
 
 		// **************************************************
 		if (this.settings.informationMessages === undefined) {
-			Vue.set(this.settings, 'informationMessages', null);
+			this.settings['informationMessages'] = null;
 		}
 		// **************************************************
 
 		// **************************************************
 		if (this.settings.isSelectable === undefined) {
-			Vue.set(this.settings, 'isSelectable', false);
+			this.settings['isSelectable'] = false;
 		} else {
 			if (!(this.settings.isSelectable === true || this.settings.isSelectable === false)) {
 				this.settings.isSelectable = false;
@@ -206,7 +208,7 @@ export default {
 
 		// **************************************************
 		if (this.settings.displayRowNumber === undefined) {
-			Vue.set(this.settings, 'displayRowNumber', false);
+			this.settings['displayRowNumber'] = false;
 		} else {
 			if (!(this.settings.displayRowNumber === true || this.settings.displayRowNumber === false)) {
 				this.settings.displayRowNumber = false;
@@ -216,7 +218,7 @@ export default {
 
 		// **************************************************
 		if (this.settings.loadFirstPageAutomatically === undefined) {
-			Vue.set(this.settings, 'loadFirstPageAutomatically', false);
+			this.settings['loadFirstPageAutomatically'] = false;
 		} else {
 			if (
 				!(
@@ -231,7 +233,7 @@ export default {
 
 		// **************************************************
 		if (this.settings.displayErrorMessages === undefined) {
-			Vue.set(this.settings, 'displayErrorMessages', false);
+			this.settings['displayErrorMessages'] = false;
 		} else {
 			if (
 				!(
@@ -246,7 +248,7 @@ export default {
 
 		// **************************************************
 		if (this.settings.displayColumnSettings === undefined) {
-			Vue.set(this.settings, 'displayColumnSettings', false);
+			this.settings['displayColumnSettings'] = false;
 		} else {
 			if (
 				!(
@@ -261,7 +263,7 @@ export default {
 
 		// **************************************************
 		if (this.settings.displayInformationMessages === undefined) {
-			Vue.set(this.settings, 'displayInformationMessages', false);
+			this.settings['displayInformationMessages'] = false;
 		} else {
 			if (
 				!(
@@ -279,8 +281,10 @@ export default {
 			let column = this.settings.columns[index];
 
 			// **************************************************
+			console.log(column.isHidden);
+			console.log(column.isHidden === undefined);
 			if (column.isHidden === undefined) {
-				Vue.set(column, 'isHidden', false);
+				column['isHidden'] = false;
 			} else {
 				if (!(column.isHidden === true || column.isHidden === false)) {
 					column.isHidden = false;
@@ -290,7 +294,7 @@ export default {
 
 			// **************************************************
 			if (column.isCheckbox === undefined) {
-				Vue.set(column, 'isCheckbox', false);
+				column['isCheckbox'] = false;
 			} else {
 				if (!(column.isCheckbox === true || column.isCheckbox === false)) {
 					column.isCheckbox = false;
@@ -300,7 +304,7 @@ export default {
 
 			// **************************************************
 			if (column.isSortable === undefined) {
-				Vue.set(column, 'isSortable', false);
+				column['isSortable'] = false;
 			} else {
 				if (!(column.isSortable === true || column.isSortable === false)) {
 					column.isSortable = false;
@@ -341,15 +345,22 @@ export default {
 		},
 
 		displayCheckbox: function (column) {
+			if (column.isHidden) {
+				return '<i class="fa-regular fa-square"></i>';
+			} else {
+				return '<i class="fa-regular fa-square-check"></i>';
+			}
+
+			// In case you can't use icons with string interpolation
 			/* Note: I have to have this a bit more complex logic for displaying "Up-Down" sorting indicatior icons
           because I cannot use string interpolation with font-awesome-icon -.-'' */
-			if (column.isHidden) {
-				// return '<font-awesome-icon icon="square" />';
-				return true;
-			} else {
-				// return '<font-awesome-icon icon="check-square" />';
-				return false;
-			}
+			//if (column.isHidden) {
+			//	// return '<font-awesome-icon icon="square" />';
+			//	return true;
+			//} else {
+			//	// return '<font-awesome-icon icon="check-square" />';
+			//	return false;
+			//}
 		},
 
 		toggleColumnVisibility: function (column) {
@@ -538,7 +549,7 @@ export default {
 						let item = this.settings.items[index];
 
 						if (item.isSelected === undefined || item.isSelected === null) {
-							Vue.set(item, 'isSelected', false);
+							item['isSelected'] = false;
 						} else {
 							if (item.isSelected !== true && item.isSelected !== false) {
 								// eslint-disable-next-line no-undef
