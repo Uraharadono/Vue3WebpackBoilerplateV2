@@ -22,7 +22,7 @@ Also used/implemented:
  - `Axios` wrapper - wanted it to look similar to old `jQuery Ajax` and to support uploading files out of the box
  - `Datepicker`
  - `FontAwesome` icons - I have not implemented `FontAwesome` using this way: https://fontawesome.com/docs/web/use-with/vue/
-	even tho' merging and combining icons seems like great idea, because I want to be able to use icons dynamically (read inside strings).
+	even tho' merging and combining icons seems like great idea, because I want to be able to use icons dynamically (using string interpolation).
 	I have used modified version of: https://fontawesome.com/docs/web/setup/host-yourself/webfonts
 	to load fonts myself. Instead of what is shown in tutorial, I have installed `FontAwesome` from `npm` (https://fontawesome.com/docs/web/setup/packages)
 	and imported the `.scss` files myself.
