@@ -15,6 +15,7 @@ Also used/implemented:
  - Custom **Xhr File Upload component** - this component supports quite the amount of history while also using my implementation of `Form Post` to post data to server
  - Custom **Autocomplete component** - my own authoring, quite simple, lightweight, easy to use. Please credit if you use it. 
  - Custom **Toggle component**
+ - Custom **Data table component** I named **Sephiroth grid** - My baby. Data table of my own authoring. Insenely extensable and customazible while being quite simple and lightweight, easy to use. Please credit if you use it.
  - Custom **Modal component**
  - Custom **Are you sure you want to delete (modal) component**
  - Custom **Loader 1 & 2 components**
