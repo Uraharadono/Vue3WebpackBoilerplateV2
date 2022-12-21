@@ -4,7 +4,7 @@ import router from './router';
 import { createPinia } from 'pinia';
 
 // Mikey custom directives cause I kind of hate myself
-import uiAuthGuard from '@/custom-directives/ui-auth-guard';
+import uiAuthGuard from '@/custom-directives/ui-auth-guard.js';
 // import uiAuthGuard from './custom-directives/ui-auth-guard';
 
 // createApp(App).use(router).use(createPinia()).mount('#app');

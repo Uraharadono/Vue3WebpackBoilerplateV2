@@ -140,7 +140,7 @@ export default {
 				additionalFooterActions: [
 					{
 						title: 'Add client',
-						icon: 'plus',
+						icon: '<i class="fa-solid fa-plus"></i>',
 						// path: "add-client"
 						action: () => {
 							router.push({

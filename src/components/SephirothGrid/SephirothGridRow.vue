@@ -10,53 +10,55 @@
 			<input v-model="item.isSelected" type="checkbox" />
 		</td>
 
-		<!--eslint-disable-next-line vue/require-v-for-key, vue/no-use-v-if-with-v-for-->
-		<td v-for="column in settings.columns" v-if="$parent.displayColumn(column)">
-			<!-- <img v-if="column.isImage" :src="getCellValue(column)"> -->
-			<img
-				v-if="column.isImage"
-				:src="getCellValue(column)"
-				onerror="this.onerror = null; this.src='https://static.deron.nl/ArticleImages/noimage.jpg'"
-				height="60"
-			/>
+		<!--eslint-disable-next-line vue/require-v-for-key-->
+		<td v-for="column in settings.columns">
+			<template v-if="$parent.displayColumn(column)">
+				<!-- <img v-if="column.isImage" :src="getCellValue(column)"> -->
+				<img
+					v-if="column.isImage"
+					:src="getCellValue(column)"
+					onerror="this.onerror = null; this.src='https://static.deron.nl/ArticleImages/noimage.jpg'"
+					height="60"
+				/>
 
-			<!--Note here: I really don't need this "v-else-if". I could have just placed "@click" event on span below,
+				<!--Note here: I really don't need this "v-else-if". I could have just placed "@click" event on span below,
       but for whatever reason I get paranoid regarding "prevent" and bubbling of the click. -->
-			<span
-				v-else-if="column.isFileDownload"
-				@click.prevent="downloadFile(column)"
-				v-html="getCellValue(column)"
-			/>
+				<span
+					v-else-if="column.isFileDownload"
+					@click.prevent="downloadFile(column)"
+					v-html="getCellValue(column)"
+				/>
 
-			<span v-else-if="column.isRouterLink">
-				<router-link
-					class="fake-link"
-					:to="{ path: column.routerLinkPath + getFilePathValue(column) }"
+				<span v-else-if="column.isRouterLink">
+					<router-link
+						class="fake-link"
+						:to="{ path: column.routerLinkPath + getFilePathValue(column) }"
+					>
+						{{ getCellValue(column) }}
+					</router-link>
+				</span>
+
+				<div
+					v-for="method in column.methods"
+					v-else-if="column.isMethods"
+					:key="method.buttonClass"
+					class="btn-group"
+					role="group"
 				>
-					{{ getCellValue(column) }}
-				</router-link>
-			</span>
+					<button
+						class="btn btn-sm"
+						:class="method.buttonClass"
+						type="button"
+						@click.prevent="method.func(item)"
+					>
+						<!--<font-awesome-icon :icon="['fa', method.methodIcon]" />-->
+						<!--eslint-disable-next-line vue/no-v-html-->
+						<i v-html="method.methodIcon"></i>
+					</button>
+				</div>
 
-			<div
-				v-for="method in column.methods"
-				v-else-if="column.isMethods"
-				:key="method.buttonClass"
-				class="btn-group"
-				role="group"
-			>
-				<button
-					class="btn btn-sm"
-					:class="method.buttonClass"
-					type="button"
-					@click.prevent="method.func(item)"
-				>
-					<!--<font-awesome-icon :icon="['fa', method.methodIcon]" />-->
-					<!--eslint-disable-next-line vue/no-v-html-->
-					<i v-html="method.methodIcon"></i>
-				</button>
-			</div>
-
-			<span v-else v-html="getCellValue(column)" />
+				<span v-else v-html="getCellValue(column)" />
+			</template>
 		</td>
 	</tr>
 </template>
@@ -83,8 +85,10 @@ export default {
 			},
 		},
 		item: {
-			type: Number,
-			default: 0,
+			type: Object,
+			default: () => {
+				return {};
+			},
 		},
 	},
 	methods: {
@@ -99,11 +103,13 @@ export default {
 					if (result === 1 || result === true) {
 						// result = '<input type="checkbox" disabled="disabled" checked="checked" />'
 						// result = '<font-awesome-icon icon="check-square" />';
-						result = '☒';
+						// result = '☒';
+						result = '<i class="fa-solid fa-square-check"></i>';
 					} else {
 						// result = '<input type="checkbox" disabled="disabled" />'
 						// result = '<font-awesome-icon icon="square" />';
-						result = '☐';
+						// result = '☐';
+						result = '<i class="fa-regular fa-square"></i>';
 					}
 				}
 			}

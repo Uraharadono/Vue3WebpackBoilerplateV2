@@ -48,9 +48,10 @@
 						:title="action.title"
 						@click="action.action"
 					>
+						<!-- In case you use vue-fontawesome-package -->
 						<!--<font-awesome-icon :icon="['fa', action.icon]" />-->
 						<!--eslint-disable-next-line vue/no-v-html-->
-						<i v-html="action.icon"></i>
+						<i v-html="action.icon"> </i>
 					</div>
 
 					<div class="paginate_button" :title="settings.culture.refresh" @click="$parent.refresh">

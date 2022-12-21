@@ -39,13 +39,13 @@
 				</slot>
 			</sephiroth-modal>
 
-			<!-- <display-error-messages v-if="settings.displayErrorMessages"
+			<!-- <ErrorMessagesDisplay v-if="settings.displayErrorMessages"
                               v-bind:messages="settings.errorMessages">
-      </display-error-messages> -->
+     			 </ErrorMessagesDisplay> -->
 
-			<!-- <display-information-messages v-if="settings.displayInformationMessages"
+			<!-- <InformationMessagesDisplay v-if="settings.displayInformationMessages"
                                     v-bind:messages="settings.informationMessages">
-      </display-information-messages> -->
+      		     </InformationMessagesDisplay> -->
 
 			<slot name="search" />
 
@@ -97,6 +97,9 @@ import SephirothGridRow from './SephirothGridRow.vue';
 import SephirothGridFooter from './SephirothGridFooter.vue';
 import SephirothModal from './SephirothModal.vue';
 
+//import InformationMessagesDisplay "./InformationMessagesDisplay.vue";
+//import ErrorMessagesDisplay "./InformationMessagesDisplay.vue";
+
 export default {
 	name: 'SephirothGrid',
 	components: {
@@ -106,7 +109,6 @@ export default {
 		SephirothGridFooter,
 		SephirothModal,
 	},
-	// props: ['settings'],
 	props: {
 		settings: {
 			type: Object,
@@ -281,8 +283,6 @@ export default {
 			let column = this.settings.columns[index];
 
 			// **************************************************
-			console.log(column.isHidden);
-			console.log(column.isHidden === undefined);
 			if (column.isHidden === undefined) {
 				column['isHidden'] = false;
 			} else {

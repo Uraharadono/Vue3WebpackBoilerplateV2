@@ -17,14 +17,14 @@
                          @click="$parent.openColumnSettingsModal" /> -->
 		</th>
 
-		<SephirothGridColumn
-			v-for="column in settings.columns"
-			v-if="$parent.displayColumn(column)"
-			:key="column.fieldName"
-			:settings="settings"
-			:parameters="parameters"
-			:column="column"
-		/>
+		<template v-for="column in settings.columns" :key="column.fieldName">
+			<SephirothGridColumn
+				v-if="$parent.displayColumn(column)"
+				:settings="settings"
+				:parameters="parameters"
+				:column="column"
+			/>
+		</template>
 	</tr>
 </template>
 
