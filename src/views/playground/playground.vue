@@ -22,6 +22,7 @@ export default {
 				{ title: 'Are You Sure Modal', content: null, navComponent: 'are-you-sure-modal' },
 				{ title: 'Autocomplete', content: null, navComponent: 'autocomplete' },
 				{ title: 'Tabs (content)', content: null, navComponent: 'content-tabs' },
+				{ title: 'Sephiroth grid', content: null, navComponent: 'sephiroth' },
 			],
 		};
 	},

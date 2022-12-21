@@ -58,6 +58,11 @@ const routes: Array<RouteRecordRaw> = [
 				name: 'Autocomplete',
 				component: () => import('../views/playground/autocomplete/autocomplete.vue'),
 			},
+			{
+				path: 'sephiroth',
+				name: 'Sephiroth',
+				component: () => import('../views/playground/sephiroth.vue'),
+			},
 		],
 	},
 ];
