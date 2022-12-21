@@ -34,7 +34,7 @@
 
 <script>
 import SephirothGrid from '@/components/SephirothGrid/SephirothGrid.vue';
-import { gridLanguageDutch } from '@/components/SephirothGrid/sephiroth-grid-lang';
+import { gridLanguageEnglish } from '@/components/SephirothGrid/sephiroth-grid-lang';
 // import AppLoader from '@/Views/Shared/AppLoader.vue';
 import AppLoader from '@/components/ComponentLoader.vue';
 import router from '@/router';
@@ -47,7 +47,7 @@ export default {
 			loading: false,
 
 			gridSettings: {
-				culture: gridLanguageDutch,
+				culture: gridLanguageEnglish,
 				url: '/api/Clients/GetClients',
 
 				isSelectable: false,

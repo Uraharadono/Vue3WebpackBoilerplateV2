@@ -1,3 +1,4 @@
+<!-- eslint-disable vue/no-mutating-props, vue/no-v-html -->
 <template>
 	<th>
 		<div
@@ -7,33 +8,26 @@
 		>
 			<!-- Note to self: I moved this button to the bottom of the grid, because it was breaking my whole grid (side scrool) -->
 			<!-- <div class="col-1">
-        <font-awesome-icon
-          v-if="settings.displayColumnSettings"
-          icon="cog"
-          @click.self="$parent.$parent.openColumnSettingsModal" />
-      </div> -->
+      			   <font-awesome-icon
+      			     v-if="settings.displayColumnSettings"
+      			     icon="cog"
+      			     @click.self="$parent.$parent.openColumnSettingsModal" />
+      			 </div> -->
 
 			<div class="col-10">
 				{{ column.title }}
 			</div>
 
 			<div v-show="column.isSortable" class="col-1 float-end">
-				<!--eslint-disable-next-line vue/no-v-html-->
 				<span v-html="displayArrow()"></span>
 
 				<!-- In case you can't use icons with string interpolation -->
-				<!--Note: I have to have this a bit more complex logic for displaying "Up-Down" sorting indicatior icons 
-              because I cannot use string interpolation with font-awesome-icon -.-'' -->
-				<!--<font-awesome-icon v-if="displayArrow()" icon="sort-up" />
-				<font-awesome-icon v-else icon="sort-down" />-->
+				<!-- Note: I have to have this a bit more complex logic for displaying "Up-Down" sorting indicatior icons 
+              		 because I cannot use string interpolation with font-awesome-icon -.-'' -->
+				<!-- <font-awesome-icon v-if="displayArrow()" icon="sort-up" />
+					 <font-awesome-icon v-else icon="sort-down" /> -->
 			</div>
 		</div>
-
-		<!-- Pure bootstrap inputs for search filter-->
-		<!-- <div class="row" v-if="column.isSearchable">
-      <div class="col-8"></div>
-        <input type="text" v-model="searchText" class="float-end" />
-    </div> -->
 
 		<div v-if="column.isSearchable" class="input-group mb-3">
 			<input
@@ -43,8 +37,8 @@
 				:placeholder="[[column.title]] + ' filter'"
 			/>
 			<!-- <span class="input-group-text">
-        <font-awesome-icon icon="filter" />
-      </span> -->
+      			   <font-awesome-icon icon="filter" />
+      			 </span> -->
 		</div>
 	</th>
 </template>
@@ -55,7 +49,6 @@ import { debounce, isNullOrWs } from '@/common/methods';
 
 export default {
 	name: 'SephirothGridColumn',
-	// props: ['settings', 'parameters', 'column'],
 	props: {
 		settings: {
 			type: Object,
@@ -149,13 +142,11 @@ export default {
 			// ******************* In case you can't do icons in string interpolation *******************************
 			/* Note: I have to have this a bit more complex logic for displaying "Up-Down" sorting indicatior icons
                because I cannot use string interpolation with font-awesome-icon -.-'' */
-			//if (this.parameters.sort.direction === 0) {
-			//	// return '<font-awesome-icon icon="sort-down" />';
-			//	return true;
-			//} else {
-			//	// return '<font-awesome-icon icon="sort-up" />';
-			//	return false;
-			//}
+			// if (this.parameters.sort.direction === 0) {
+			// 	return true;
+			// } else {
+			// 	return false;
+			// }
 			// **************************************************
 		},
 

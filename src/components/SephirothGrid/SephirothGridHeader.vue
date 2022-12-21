@@ -34,7 +34,6 @@ import SephirothGridColumn from './SepirothGridColumn';
 export default {
 	name: 'SephirothGridHeader',
 	components: { SephirothGridColumn },
-	// props: ['settings', 'parameters'],
 	props: {
 		settings: {
 			type: Object,

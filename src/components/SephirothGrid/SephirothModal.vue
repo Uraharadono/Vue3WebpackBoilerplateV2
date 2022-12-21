@@ -40,7 +40,6 @@ export default {
 		closeModal() {
 			this.showModal = false;
 		},
-		// submitAndClose() {},
 	},
 };
 </script>

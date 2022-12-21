@@ -1,4 +1,4 @@
-<!-- eslint-disable vue/no-v-html -->
+<!-- eslint-disable vue/no-v-html, vue/no-mutating-props -->
 <template>
 	<tr>
 		<td v-if="settings.displayRowNumber">
@@ -6,23 +6,20 @@
 		</td>
 
 		<td v-if="settings.isSelectable">
-			<!--eslint-disable-next-line vue/no-mutating-props-->
 			<input v-model="item.isSelected" type="checkbox" />
 		</td>
 
-		<!--eslint-disable-next-line vue/require-v-for-key-->
-		<td v-for="column in settings.columns">
+		<td v-for="column in settings.columns" :key="column.fieldName">
 			<template v-if="$parent.displayColumn(column)">
-				<!-- <img v-if="column.isImage" :src="getCellValue(column)"> -->
 				<img
 					v-if="column.isImage"
 					:src="getCellValue(column)"
-					onerror="this.onerror = null; this.src='https://static.deron.nl/ArticleImages/noimage.jpg'"
+					onerror="this.onerror = null; this.src='https://upload.wikimedia.org/wikipedia/commons/6/65/No-Image-Placeholder.svg'"
 					height="60"
 				/>
 
-				<!--Note here: I really don't need this "v-else-if". I could have just placed "@click" event on span below,
-      but for whatever reason I get paranoid regarding "prevent" and bubbling of the click. -->
+				<!-- Note here: I really don't need this "v-else-if". I could have just placed "@click" event on span below,
+      				 but for whatever reason I get paranoid regarding "prevent" and bubbling of the click. -->
 				<span
 					v-else-if="column.isFileDownload"
 					@click.prevent="downloadFile(column)"
@@ -51,8 +48,7 @@
 						type="button"
 						@click.prevent="method.func(item)"
 					>
-						<!--<font-awesome-icon :icon="['fa', method.methodIcon]" />-->
-						<!--eslint-disable-next-line vue/no-v-html-->
+						<!-- <font-awesome-icon :icon="['fa', method.methodIcon]" /> -->
 						<i v-html="method.methodIcon"></i>
 					</button>
 				</div>
@@ -70,7 +66,6 @@ import { getFileName, isNullOrWs } from '@/common/methods';
 
 export default {
 	name: 'SephirothGridRow',
-	// props: ['settings', 'parameters', 'item', 'index'],
 	props: {
 		settings: {
 			type: Object,
@@ -101,13 +96,9 @@ export default {
 				result = this.item[column.fieldName];
 				if (column.isCheckbox === true) {
 					if (result === 1 || result === true) {
-						// result = '<input type="checkbox" disabled="disabled" checked="checked" />'
-						// result = '<font-awesome-icon icon="check-square" />';
 						// result = '☒';
 						result = '<i class="fa-solid fa-square-check"></i>';
 					} else {
-						// result = '<input type="checkbox" disabled="disabled" />'
-						// result = '<font-awesome-icon icon="square" />';
 						// result = '☐';
 						result = '<i class="fa-regular fa-square"></i>';
 					}

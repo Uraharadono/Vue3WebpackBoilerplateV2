@@ -1,3 +1,4 @@
+<!-- eslint-disable vue/no-mutating-props, vue/no-v-html -->
 <template>
 	<div class="row">
 		<div class="col-12">
@@ -18,14 +19,13 @@
 							style="cursor: pointer"
 							@click="toggleColumnVisibility(column)"
 						>
-							<!--eslint-disable-next-line vue/no-v-html-->
 							<span v-html="displayCheckbox(column)"></span>
 
 							<!-- In case you can't use icons with string interpolation -->
-							<!--Note: I have to have this a bit more complex logic for displaying "Up-Down" sorting indicatior icons
-                        because I cannot use string interpolation with font-awesome-icon -.-'' -->
-							<!--<font-awesome-icon v-if="displayCheckbox(column)" icon="square" />
-							<font-awesome-icon v-else icon="check-square" />-->
+							<!-- Note: I have to have this a bit more complex logic for displaying "Up-Down" sorting indicatior icons
+                        		 because I cannot use string interpolation with font-awesome-icon -.-'' -->
+							<!-- <font-awesome-icon v-if="displayCheckbox(column)" icon="square" />
+								 <font-awesome-icon v-else icon="check-square" /> -->
 
 							{{ column.title }}
 						</li>
