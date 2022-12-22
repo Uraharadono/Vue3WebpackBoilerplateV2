@@ -1,6 +1,6 @@
 <template>
 	<div>
-		<ModalComponent v-if="modalVisible" :modal-size="'large'">
+		<ModalComponent v-if="modalVisible" :modal-size="'large'" :teleport-disabled="true">
 			<!-- No longer 'slots="header"', it should be now in "template" tag with "v-slot:header" or "#header" for short. -->
 			<!-- https://vuejs.org/guide/components/slots.html#named-slots -->
 			<template #header> Are you sure you want to delete this item ? </template>

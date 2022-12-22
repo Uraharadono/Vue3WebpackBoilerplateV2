@@ -1,41 +1,43 @@
 <template>
-	<div
-		id="modal-9"
-		class="modal fade show"
-		tabindex="-1"
-		role="dialog"
-		style="display: block"
-		aria-modal="true"
-	>
+	<Teleport :disabled="teleportDisabled">
 		<div
-			class="modal-dialog modal-dialog-centered modal-dialog-scrollable"
-			:class="modalSizeComputed"
+			id="modal-9"
+			class="modal fade show"
+			tabindex="-1"
+			role="dialog"
+			style="display: block"
+			aria-modal="true"
 		>
-			<div class="modal-content">
-				<div class="modal-header">
-					<h5 class="modal-title m-0">
-						<slot name="header" />
-					</h5>
-				</div>
+			<div
+				class="modal-dialog modal-dialog-centered modal-dialog-scrollable"
+				:class="modalSizeComputed"
+			>
+				<div class="modal-content">
+					<div class="modal-header">
+						<h5 class="modal-title m-0">
+							<slot name="header" />
+						</h5>
+					</div>
 
-				<div class="modal-body">
-					<slot name="body" />
-				</div>
+					<div class="modal-body">
+						<slot name="body" />
+					</div>
 
-				<div class="modal-footer">
-					<slot name="footer" />
+					<div class="modal-footer">
+						<slot name="footer" />
+					</div>
 				</div>
 			</div>
 		</div>
-	</div>
+	</Teleport>
 </template>
 
 <script>
 export default {
 	name: 'ModalComponent',
-	// props: ['modalSize'],
 	props: {
 		modalSize: { type: String, default: '' },
+		teleportDisabled: { type: Boolean, default: false },
 	},
 	data: function () {
 		return {
