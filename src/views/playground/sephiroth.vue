@@ -35,7 +35,6 @@
 <script>
 import SephirothGrid from '@/components/SephirothGrid/SephirothGrid.vue';
 import { gridLanguageEnglish } from '@/components/SephirothGrid/sephiroth-grid-lang';
-// import AppLoader from '@/Views/Shared/AppLoader.vue';
 import AppLoader from '@/components/ComponentLoader.vue';
 import router from '@/router';
 
@@ -145,7 +144,7 @@ export default {
 						action: () => {
 							router.push({
 								name: 'New Client',
-								// params: { quotationId: this.id }
+								// params: { someId: this.id }
 							});
 						},
 					},
