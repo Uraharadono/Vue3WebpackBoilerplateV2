@@ -52,7 +52,8 @@ export default {
 		},
 		updateClientSuggestions(text) {
 			this.clientItems = clientSuggestions.filter(
-				(item) => item.name.toLowerCase().indexOf(text.toLowerCase()) > 1
+				// (item) => item.name.toLowerCase().indexOf(text.toLowerCase()) > 1
+				(item) => item.name.toLowerCase().trim().includes(text.toLowerCase().trim())
 			);
 
 			// Usage with API calls
