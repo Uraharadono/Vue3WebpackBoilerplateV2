@@ -30,11 +30,10 @@ export default {
 			this.$refs.deleteModalConfirmation.show(this.deleteInvoice, item);
 		},
 		deleteInvoice(item) {
-			console.log('Item deleted', item);
+			console.log('Item deleted succesufully!', item);
 			this.$refs.deleteModalConfirmation.hide();
 
 			// This below is example of using the ajax to do a proper delete call for item
-			// console.log(item);
 			// const data = { invoiceId: item.invoiceId };
 			// ajax
 			// 	.del('/api/Invoicing/DeleteInvoice', data)

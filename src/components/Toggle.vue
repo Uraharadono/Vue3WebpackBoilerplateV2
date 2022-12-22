@@ -24,7 +24,6 @@
 
 <script>
 export default {
-	// props: ['value'],
 	props: {
 		toggled: { type: Boolean, default: false },
 	},

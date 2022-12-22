@@ -117,7 +117,7 @@
 								With support for both route (navigation) and component content based tab content. My
 								own authoring, quite simple, lightweight, easy to use. <br />
 								Page that contains Demo of other components actually uses
-								<bold>route content</bold> and this one uses content.<br />
+								<strong>route content</strong> and this one uses content.<br />
 								Please credit if you use it.
 							</p>
 						</router-link>
@@ -152,6 +152,19 @@
 								<i class="fa-solid fa-link text-primary"></i>
 							</div>
 							<p class="mb-1 text-start"></p>
+						</router-link>
+						<router-link class="list-group-item list-group-item-action" to="/playground/sephiroth">
+							<div class="d-flex w-100 justify-content-between">
+								<h5 class="mb-1">
+									Custom <strong>data table component</strong> I named <b><i>Sephiroth grid</i></b>
+								</h5>
+								<i class="fa-solid fa-link text-primary"></i>
+							</div>
+							<p class="mb-1 text-start">
+								My baby. Data table of my own authoring. Insenely extensable and customazible while
+								being quite simple and lightweight, easy to use. <br />
+								Please credit if you use it.
+							</p>
 						</router-link>
 						<router-link class="list-group-item list-group-item-action" to="/playground/modal">
 							<div class="d-flex w-100 justify-content-between">

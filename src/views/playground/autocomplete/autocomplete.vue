@@ -38,11 +38,6 @@ export default {
 			clientTemplate: shallowRef(ClientTemplate),
 		};
 	},
-	async mounted() {
-		// console.log('clientTemplate', this.clientTemplate);
-		// eslint-disable-next-line prettier/prettier
-		// console.log('type of clientTemplate', typeof(this.clientTemplate));
-	},
 	methods: {
 		// Autocomplete methods
 		clientItemSelected(item) {
@@ -59,12 +54,11 @@ export default {
 			this.clientItems = clientSuggestions.filter(
 				(item) => item.name.toLowerCase().indexOf(text.toLowerCase()) > 1
 			);
-			console.log(this.clientItems);
+
 			// Usage with API calls
 			//ajax
 			//	.get('/api/SearchItems/GetClients', { searchParam: text })
 			//	.then((response) => {
-			//		console.log(response);
 			//		this.clientItems = response;
 			//	})
 			//	.catch((e) => {
