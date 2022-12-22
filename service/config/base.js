@@ -16,9 +16,8 @@ const isProd = process.env.NODE_ENV === 'production';
 const outputFileName = `js/[name]${isProd ? '.[contenthash:8]' : ''}.js`;
 
 let API_BASE_URL = {
-	production: JSON.stringify('https://coreapi.deron.nl'),
+	production: JSON.stringify('https://api.something.com'),
 	development: JSON.stringify('https://localhost:44357'),
-	// productionTest: JSON.stringify("https://coreapi.derontest.nl"),
 };
 
 module.exports = {
