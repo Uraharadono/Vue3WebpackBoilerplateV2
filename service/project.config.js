@@ -4,11 +4,11 @@ module.exports = {
 	outputDir: 'dist',
 
 	dev: {
-		publicPath: '/',
+		publicPath: '/GithubPagesTest/',
 		port: 8080,
 	},
 
 	build: {
-		publicPath: '/',
+		publicPath: '/GithubPagesTest/',
 	},
 };

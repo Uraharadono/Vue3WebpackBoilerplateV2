@@ -13,7 +13,7 @@ const routes: Array<RouteRecordRaw> = [
 		component: () => import(/* webpackChunkName: "about" */ '../views/about/index.vue'),
 	},
 	{
-		path: '/playground',
+		path: '/playground/',
 		name: 'Playgrond',
 		component: () =>
 			import(/* webpackChunkName: "playground" */ '../views/playground/playground.vue'),
@@ -68,7 +68,7 @@ const routes: Array<RouteRecordRaw> = [
 ];
 
 const router = createRouter({
-	history: createWebHistory('/'), // v3 equivalent: mode: "history",
+	history: createWebHistory('/GithubPagesTest/'), // v3 equivalent: mode: "history",
 	// also, The base option is now passed as the first argument to createWebHistory (and other histories):  base: "/",
 	routes,
 });
