@@ -11,6 +11,7 @@
 
 @import './fontawesome-bundle.scss';
 
+
 // ================================================================================
 // Dashboard styles - https://wrapbootstrap.com/user/next-item
 // ================================================================================
@@ -19,14 +20,20 @@
 
 
 // ================================================================================
+// Application component styles
+// ================================================================================
+
+// @import './auth.scss';
+
+// ================================================================================
 // Application common styles
 // ================================================================================
 
 @import './loader.scss';
 @import './tabs.scss';
+@import './utility.scss';
 
 //@import './sweet-alert.scss';
-//@import './utility.scss';
 //@import './navbar-user-info.scss';
 //@import './animated-border.scss';
 
@@ -35,11 +42,8 @@
 // Application custom components
 // ================================================================================
 
-//@import './slider.scss';
 @import './custom-styles';
-
-
-
+//@import './slider.scss';
 // @import '../components/page-loader';
 // @import '../components/ajax-loader';
 
@@ -61,6 +65,7 @@
 // ================================================================================
 // Datepicker styles
 // ================================================================================
+
 //@import '~@sum.cumo/vue-datepicker/dist/Datepicker.css';
 
 

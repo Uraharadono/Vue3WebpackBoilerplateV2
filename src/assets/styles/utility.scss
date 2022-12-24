@@ -1,0 +1,311 @@
+.no-padding {
+  padding: 0 !important;
+}
+
+.no-margin {
+  margin: 0 !important;
+}
+
+.transparent-background {
+  background-color: transparent i !important;
+}
+
+.inline-flex-wrap {
+  flex-wrap: nowrap !important;
+}
+
+.full-white {
+  background: white !important;
+}
+
+.login-gray {
+  background: #4b4f53 !important;
+}
+
+.color-red {
+  color: red !important;
+}
+
+.color-orange {
+  color: #ff8534 !important;
+}
+
+//  Override Nprogress to be more in line with our app style
+#nprogress .bar {
+  background: #ff8534;
+  height: 5px;
+}
+
+#nprogress .peg {
+  box-shadow: 0 0 10px #ff8534, 0 0 5px #ff8534;
+}
+
+#nprogress .spinner-icon {
+  border: solid 5px transparent;
+  border-top-color: #ff8534;
+  border-left-color: #ff8534;
+}
+
+
+// ***********************************************************
+// Datepicker styles fix
+// ***********************************************************
+.vdp-datepicker__calendar {
+  /* background: none !important; */
+  background: #2c435b !important;
+}
+
+.vdp-datepicker__calendar header .prev:not(.disabled):hover,
+.vdp-datepicker__calendar header .next:not(.disabled):hover,
+.vdp-datepicker__calendar header .up:not(.disabled):hover {
+  // background: rgb(189, 27, 27) !important;
+  background: #3d5c7e !important;
+}
+
+// doing this because gray background for tiles is ugly and is not consistent with our app theme
+.vdp-datepicker__calendar .today {
+  background-color: #3d5c7e !important;
+}
+
+// white labels (used to show day number) are not visible clearly
+.vdp-datepicker__calendar .cell.selected {
+  color: #ffffff !important;
+}
+
+
+// ***********************************************************
+// Blinker - Makes certain element blink (used to show mainly exclamation marks that something went wrong)
+// Take from: https://codepen.io/goorak7/pen/bNJZLm
+// ***********************************************************
+.blink {
+  animation: blink 2s steps(5, start) infinite;
+  -webkit-animation: blink 1s steps(5, start) infinite;
+}
+
+@keyframes blink {
+  to {
+    visibility: hidden;
+  }
+}
+
+@-webkit-keyframes blink {
+  to {
+    visibility: hidden;
+  }
+}
+
+
+
+// ***********************************************************
+// CSS only Tooltip Styles - taken from: https://codepen.io/PhiloBeddoe/pen/oNjzeGr
+// Note: If this is not ok, take a look at: https://codepen.io/marcwiethe/pen/JprZvJ
+// ***********************************************************
+$xy-border: (
+  top: t,
+  bottom: b,
+  left: l,
+  right: r
+);
+
+[data-tooltip] {
+
+  $triangle: .3rem;
+  $background-color: rgba(51, 51, 51, .9);
+
+  cursor: pointer;
+  display: inline-block;
+  line-height: 1;
+  position: relative;
+
+  &::after {
+    background-color: $background-color;
+    border-radius: $triangle;
+    color: #fff;
+    content: attr(data-tooltip);
+    font-size: 1rem;
+    font-size: 85%;
+    font-weight: normal;
+    line-height: 1.15rem;
+    opacity: 0;
+    padding: .25rem .5rem;
+    position: absolute;
+    text-align: center;
+    text-transform: none;
+    transition: opacity .2s;
+    visibility: hidden;
+    white-space: nowrap;
+    z-index: 1;
+  }
+
+  @each $direction,
+  $d in $xy-border {
+    &.tooltip-#{$direction} {
+
+      // arrows
+      &::before {
+        border-style: solid;
+        border-width: $triangle;
+        content: "";
+        opacity: 0;
+        position: absolute;
+        transition: opacity .2s;
+        visibility: hidden;
+
+        @if $direction ==top {
+          border-color: $background-color transparent transparent transparent;
+          top: 0;
+          left: 50%;
+          margin-left: -$triangle;
+        }
+
+        @else if $direction ==bottom {
+          border-color: transparent transparent $background-color transparent;
+          bottom: 0;
+          left: 50%;
+          margin-left: -$triangle;
+        }
+
+        @else if $direction ==left {
+          border-color: transparent transparent transparent $background-color;
+          top: $triangle;
+          right: calc(110% - #{$triangle});
+          margin-top: -$triangle;
+        }
+
+        @else if $direction ==right {
+          border-color: transparent $background-color transparent transparent;
+          top: 50%;
+          top: $triangle;
+          left: calc(110% - #{$triangle});
+          margin-top: -$triangle;
+        }
+      }
+
+      &::after {
+        @if $direction ==top {
+          bottom: 100%;
+          left: 50%;
+          transform: translate(-50%);
+        }
+
+        @else if $direction ==bottom {
+          top: 100%;
+          left: 50%;
+          transform: translate(-50%);
+        }
+
+        @else if $direction ==left {
+          top: -$triangle;
+          right: calc(110% + #{$triangle});
+        }
+
+        @else if $direction ==right {
+          top: -$triangle;
+          left: calc(110% + #{$triangle});
+        }
+      }
+    }
+  }
+
+  &.tooltip-mobile {
+    @media (max-width: 767px) {
+      &::before {
+        display: none;
+      }
+
+      &:after {
+        font-size: 1rem;
+        max-width: 20rem;
+        position: fixed;
+        bottom: auto;
+        top: 50%;
+        left: 50%;
+        text-align: left;
+        transform: translate(-50%);
+        white-space: normal;
+      }
+    }
+  }
+
+  &:hover::after,
+  &[class*=tooltip-]:hover::before {
+    visibility: visible;
+    opacity: 1;
+  }
+}
+
+// ***********************************************************
+// Scrollable content div
+// Some info: https://stackoverflow.com/questions/90178/make-a-div-fill-the-height-of-the-remaining-screen-space
+// ***********************************************************
+.scrollable-content {
+  position: absolute;
+  height: 60%;
+  overflow: auto;
+}
+
+
+
+
+// ***********************************************************
+// Helper class to help me simulate the appearance of the links
+// ***********************************************************
+.fake-link {
+  color: #ff8534;
+  text-decoration: none;
+  transition: color .2s ease-in-out;
+  cursor: pointer;
+}
+
+.fake-link:hover {
+  color: #ff6a07;
+}
+
+.fake-link,
+.fake-link:active,
+.fake-link:focus,
+.fake-link:hover,
+.fake-link:visited,
+button:focus {
+  outline: 0 !important;
+}
+
+// ***********************************************************
+// Classes to mainly help with cards appearance
+// ***********************************************************
+
+.bg-secondary {
+  background-color: #ff8534 !important;
+}
+
+.bg-success {
+  background-color: #81c784 !important;
+}
+
+.bg-danger {
+  background-color: #e24d4d !important;
+}
+
+.bg-warning {
+  background-color: #ffb74d !important;
+}
+
+.bg-info {
+  background-color: #64b5f6 !important;
+}
+
+.bg-light {
+  background-color: #e1e4e8 !important;
+}
+
+.bg-dark {
+  background-color: #020c1b !important;
+}
+
+// ***********************************************************
+// Class to disable the element (mainly menu item per #222)
+// ***********************************************************
+.disabled {
+  pointer-events: none;
+  opacity: 0.4;
+}

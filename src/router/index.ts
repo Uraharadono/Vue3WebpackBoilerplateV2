@@ -65,6 +65,51 @@ const routes: Array<RouteRecordRaw> = [
 			},
 		],
 	},
+
+	{
+		path: '/login',
+		name: 'Login',
+		component: () => import(/* webpackChunkName: "auth" */ '../views/auth/Login.vue'),
+	},
+	//{
+	//	path: '/login-2fa',
+	//	name: 'Login2FA',
+	//	component: () => import(/* webpackChunkName: "auth" */ '../views/auth/Login2FA.vue'),
+	//},
+	//{
+	//	path: '/2fa-setup',
+	//	name: 'Setup2FA',
+	//	component: () => import(/* webpackChunkName: "auth" */ '../views/auth/Setup2FA.vue'),
+	//},
+	//{
+	//	path: '/register',
+	//	name: 'Register',
+	//	component: () => import(/* webpackChunkName: "auth" */ '../views/auth/Register.vue'),
+	//},
+	//{
+	//	path: '/forgot-password',
+	//	name: 'Forgot password',
+	//	component: () => import(/* webpackChunkName: "auth" */ '../views/auth/ForgotPassword.vue'),
+	//},
+	//{
+	//	path: '/reset-password',
+	//	name: 'Reset password',
+	//	component: () => import(/* webpackChunkName: "auth" */ '../views/auth/ResetPassword.vue'),
+	//},
+
+	//// Terms of service
+	//{
+	//	path: '/terms-of-service/NL',
+	//	name: 'Terms of service - NL',
+	//	component: () => import(/* webpackChunkName: "tos" */ '../views/Shared/TOS/TosNL.vue'),
+	//},
+
+	//// otherwise redirect to page not found
+	//// { path: "*", redirect: "/" },
+	//{
+	//	path: '/:catchAll(.*)',
+	//	component: () => import(/* webpackChunkName: "other" */ '../views/Shared/404.vue'),
+	//},
 ];
 
 const router = createRouter({
