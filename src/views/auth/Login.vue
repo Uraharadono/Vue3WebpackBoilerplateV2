@@ -1,102 +1,80 @@
 <template>
-	<div class="layout auth">
-		<div class="log-in-page card">
-			<div
-				class="text-center custom-bg-color"
-				style="overflow: visible; background: rgba(255, 255, 255, 0.2)"
-			>
-				<h3 class="card-header star-inserted">
-					<span>Sign in with your app id to continue</span>
-				</h3>
+	<div class="container" style="width: 22rem">
+		<ComponentLoader v-show="isLoading" />
+		<form @submit.prevent="handleSubmit">
+			<!-- Email input -->
+			<div class="form-outline mb-4" :class="[v$.username.$error ? 'is-invalid' : '', '']">
+				<input
+					v-model.trim="username"
+					type="username"
+					class="form-control"
+					placeholder="Email address"
+				/>
+				<div v-if="v$.username.required.$invalid && v$.username.$dirty" class="text-danger">
+					Field is required
+				</div>
+				<div v-if="v$.username.email.$invalid && v$.username.$dirty" class="text-danger">
+					Field has to be email
+				</div>
+			</div>
 
-				<div class="card-body login-gray" style="padding: 0px; overflow: visible">
-					<ComponentLoader v-show="isLoading" />
-					<form class="login-form mb-0" @submit.prevent="handleSubmit">
-						<div class="form-group">
-							<div class="form-control" :class="[v$.username.$error ? 'is-invalid' : '', '']">
-								<input v-model="username" class="input-control" type="text" placeholder="Login" />
-							</div>
-							<div v-if="!v$.username.required && v$.username.$dirty" class="text-danger">
-								Field is required
-							</div>
-							<div v-if="!v$.username.email && v$.username.$dirty" class="text-danger">
-								Field has to be email
-							</div>
-						</div>
-
-						<div class="form-group">
-							<div class="form-control" :class="[v$.password.$error ? 'is-invalid' : '', '']">
-								<input
-									v-model="password"
-									class="input-control"
-									type="password"
-									placeholder="Password"
-								/>
-							</div>
-							<div v-if="v$.password.$dirty">
-								<div v-if="!v$.password.required" class="text-danger">Field is required</div>
-								<div v-if="!v$.password.minLength" class="text-danger">
-									Passwords in our system are a bit longer than that
-								</div>
-							</div>
-						</div>
-
-						<div class="form-group">
-							<div
-								class="tc-checkbox"
-								style="width: 100%"
-								:class="[rememberMe ? 'checked' : '', '']"
-								@click="toggleRememberMe"
-							>
-								<div class="tc-checkbox-wrap">
-									<div class="tc-checkbox-handle">
-										<input v-model="rememberMe" type="checkbox" class="checkbox-input" />
-										<span class="check-detector">
-											<i class="fa-solid fa-check"></i>
-										</span>
-									</div>
-									<div class="tc-checkbox-label">Keep me signed in</div>
-								</div>
-							</div>
-						</div>
-						<div class="d-grid gap-2">
-							<button tabindex="0" class="btn btn-primary blue-gradient">
-								<span class="btn-text">Login</span>
-
-								<span class="btn-loader">
-									<i class="icon icofont-spinner" />
-								</span>
-							</button>
-						</div>
-					</form>
-					<div class="forgot-box">
-						<!-- <a href="#/extra/sign-up">Sign Up</a> -->
-						<span class="divider" />
-						<router-link to="/forgot-password"> Forgot password? </router-link>
+			<!-- Password input -->
+			<div class="form-outline mb-4">
+				<input v-model="password" type="password" class="form-control" placeholder="Password" />
+				<div v-if="v$.password.$dirty">
+					<div v-if="v$.password.required.$invalid" class="text-danger">Field is required</div>
+					<div v-if="v$.password.minLength.$invalid" class="text-danger">
+						Passwords in our system are a bit longer than that
 					</div>
 				</div>
 			</div>
-		</div>
+
+			<!-- 2 column grid layout for inline styling -->
+			<div class="row mb-4">
+				<div class="col d-flex justify-content-center">
+					<!-- Checkbox -->
+					<div class="form-check">
+						<input
+							id="rememberMeCheckbox"
+							v-model="rememberMe"
+							class="form-check-input"
+							type="checkbox"
+							value=""
+						/>
+						<label class="form-check-label" for="rememberMeCheckbox"> Remember me </label>
+					</div>
+				</div>
+
+				<div class="col">
+					<!-- Simple link -->
+					<router-link to="/forgot-password"> Forgot password? </router-link>
+				</div>
+			</div>
+
+			<!-- Submit button -->
+			<button type="submit" class="btn btn-primary btn-block mb-4">Sign in</button>
+
+			<!-- Register buttons -->
+			<!--<div class="text-center">
+			<p>Not a member? <a href="#!">Register</a></p>
+		</div>-->
+		</form>
 	</div>
 </template>
 
 <script>
-/* eslint-disable */
-import ajax from '@/common/ajax';
+// import ajax from '@/common/ajax';
 import { useVuelidate } from '@vuelidate/core';
 import { required, minLength, email } from '@vuelidate/validators';
 // import { mapGetters, mapActions } from "vuex";
 import ComponentLoader from '@/components/ComponentLoader.vue';
 // import { authentication } from '@/store/modules/authentication';
-import { ref, onMounted, computed } from 'vue';
+// import { ref, onMounted, computed } from 'vue';
 
 export default {
 	name: 'Login',
 	components: { ComponentLoader },
-	// setup: () => ({ v$: useVuelidate() }),
-  setup () {
-    return { v$: useVuelidate() }
-  },
+	setup: () => ({ v$: useVuelidate() }),
 	data() {
 		return {
 			username: '',
@@ -111,10 +89,12 @@ export default {
 				required,
 				email,
 				minLength: minLength(6),
+				$autoDirty: true,
 			},
 			password: {
 				required,
 				minLength: minLength(8),
+				$autoDirty: true,
 			},
 		};
 	},
@@ -131,9 +111,13 @@ export default {
 	},
 	methods: {
 		// ...mapActions(["login", "logout"]),
-		async handleSubmit(e) {
-			//this.v$.$touch();
-			//if (this.v$.$invalid) return;
+		async handleSubmit() {
+			await this.v$.$touch();
+			// const result = await this.v$.$validate(); // can also be used like so, if "result" is false, something is wrong
+			if (await this.v$.$error) return;
+
+			console.log('proslo je');
+
 			//this.isLoading = true;
 			//// Mapping can be done like this as well: "const { username, password } = this;"
 			//const data = {
@@ -152,3 +136,9 @@ export default {
 	},
 };
 </script>
+
+<style>
+.is-invalid {
+	border-color: red;
+}
+</style>
