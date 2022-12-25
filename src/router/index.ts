@@ -91,11 +91,11 @@ const routes: Array<RouteRecordRaw> = [
 		name: 'Forgot password',
 		component: () => import(/* webpackChunkName: "auth" */ '../views/auth/ForgotPassword.vue'),
 	},
-	//{
-	//	path: '/reset-password',
-	//	name: 'Reset password',
-	//	component: () => import(/* webpackChunkName: "auth" */ '../views/auth/ResetPassword.vue'),
-	//},
+	{
+		path: '/reset-password',
+		name: 'Reset password',
+		component: () => import(/* webpackChunkName: "auth" */ '../views/auth/ResetPassword.vue'),
+	},
 
 	//// Terms of service
 	//{

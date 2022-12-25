@@ -105,20 +105,19 @@ export const authenticationStore = defineStore('authUser', {
 					// dispatch('alert/danger', e[0], { root: true });
 				});
 		},
-		//resetPassword({ dispatch, commit }, data) {
-		//	return ajax
-		//		.post(`/api/Auth/ResetPassword`, data)
-		//		.then((response) => {
-		//			dispatch('alert/success', 'Password reset! Please login to access your account.', {
-		//				root: true,
-		//			});
-		//			router.push('login');
-		//		})
-		//		.catch((e) => {
-		//			console.error(e);
-		//			dispatch('alert/danger', e[0], { root: true });
-		//		});
-		//},
+		resetPassword(data: any) {
+			return ajax
+				.post(`/api/Auth/ResetPassword`, data)
+				.then((response: any) => {
+					console.log(response);
+					// dispatch('alert/success', 'Password reset! Please login to access your account.', { root: true, });
+					router.push('login');
+				})
+				.catch((e: any) => {
+					console.error(e);
+					// dispatch('alert/danger', e[0], { root: true });
+				});
+		},
 
 		//loginRequest(state, data) {
 		//	state.status = { loggingIn: true };
