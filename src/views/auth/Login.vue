@@ -120,8 +120,6 @@ export default {
 			// const result = await this.v$.$validate(); // can also be used like so, if "result" is false, something is wrong
 			if (await this.v$.$error) return;
 
-			console.log('proslo je');
-
 			this.isLoading = true;
 			// Mapping can be done like this as well: "const { username, password } = this;"
 			const data = {

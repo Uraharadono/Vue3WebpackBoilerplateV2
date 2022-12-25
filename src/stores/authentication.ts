@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import router from '@/router';
 // import { useRoute } from 'vue-router';
 import ajax from '@/common/ajax';
@@ -31,15 +32,14 @@ export const authenticationStore = defineStore('authUser', {
 		// No getter
 	},
 	actions: {
-		login(data: object) {
-			console.log(data);
-			this.loginSuccess(data);
-			return;
+		async login(data: object) {
+			//console.log(data);
+			//this.loginSuccess(data);
+			//return;
 
-			// return ajax
-			ajax
+			return ajax
 				.post(`/api/Auth/Login`, data)
-				.then((response) => {
+				.then((response: any) => {
 					localStorage.setItem('currentUser', JSON.stringify(response));
 
 					// No 2 Factor authentication
@@ -50,7 +50,7 @@ export const authenticationStore = defineStore('authUser', {
 						else router.push('login-2fa');
 					}
 				})
-				.catch((e) => {
+				.catch((e: any) => {
 					console.error(e);
 					// dispatch('alert/danger', e[0], { root: true });
 				});
@@ -60,14 +60,6 @@ export const authenticationStore = defineStore('authUser', {
 			this.user = user;
 
 			let returnUrl = '';
-
-			//console.log('router.currentRoute', router.currentRoute);
-			//console.log('router.currentRoute.query', router.currentRoute.value.query);
-			//const route = useRoute();
-			//console.log('route = useRoute()', route);
-			//const path = route.path;
-			//console.log('path', path);
-
 			if (router.currentRoute.value.query.returnUrl != undefined)
 				returnUrl = router.currentRoute.value.query.returnUrl;
 

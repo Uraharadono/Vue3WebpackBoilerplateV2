@@ -104,12 +104,12 @@ const routes: Array<RouteRecordRaw> = [
 	//	component: () => import(/* webpackChunkName: "tos" */ '../views/Shared/TOS/TosNL.vue'),
 	//},
 
-	//// otherwise redirect to page not found
-	//// { path: "*", redirect: "/" },
-	//{
-	//	path: '/:catchAll(.*)',
-	//	component: () => import(/* webpackChunkName: "other" */ '../views/Shared/404.vue'),
-	//},
+	// otherwise redirect to page not found
+	// { path: "*", redirect: "/" },
+	{
+		path: '/:catchAll(.*)',
+		component: () => import(/* webpackChunkName: "other" */ '../views/shared/404.vue'),
+	},
 ];
 
 const router = createRouter({
