@@ -63,14 +63,10 @@
 </template>
 
 <script>
-// import ajax from '@/common/ajax';
 import { useVuelidate } from '@vuelidate/core';
 import { required, minLength, email } from '@vuelidate/validators';
-// import { mapGetters, mapActions } from "vuex";
-// import { authentication } from '@/store/modules/authentication';
 import ComponentLoader from '@/components/ComponentLoader.vue';
 // import { ref, onMounted, computed } from 'vue';
-
 import { mapActions } from 'pinia';
 import { authenticationStore } from '@/stores/authentication';
 
