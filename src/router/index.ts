@@ -127,35 +127,36 @@ router.afterEach(() => {
 	NProgress.done();
 });
 
-//router.beforeEach((to, from, next) => {
-//  // redirect to login page if not logged in and trying to access a restricted page
-//  const publicPages = [
-//      "/login",
-//      "/login-2fa",
-//      "/2fa-setup",
-//      "/register",
-//      "/forgot-password",
-//      "/reset-password",
-//  ];
-//  const authRequired = !publicPages.includes(to.path);
-//  const loggedInUser = localStorage.getItem("currentUser");
+// This logic should be uncomented, but since not everyone wants to use components to use login as well, I am keeping it here, and I will mention it in the readme
+router.beforeEach((to, from, next) => {
+	//  // redirect to login page if not logged in and trying to access a restricted page
+	//  const publicPages = [
+	//      "/login",
+	//      "/login-2fa",
+	//      "/2fa-setup",
+	//      "/register",
+	//      "/forgot-password",
+	//      "/reset-password",
+	//  ];
+	//  const authRequired = !publicPages.includes(to.path);
+	//  const loggedInUser = localStorage.getItem("currentUser");
 
-//  console.log(authRequired)
-//  if (authRequired) {
-//      if(!loggedInUser)
-//      {
-//          // return next("/login");
+	//  console.log(authRequired)
+	//  if (authRequired) {
+	//      if(!loggedInUser)
+	//      {
+	//          // return next("/login");
 
-//          const returnPath = window.location.pathname;
-//          return next({ name: 'Login', query: { returnUrl: returnPath } });
+	//          const returnPath = window.location.pathname;
+	//          return next({ name: 'Login', query: { returnUrl: returnPath } });
 
-//          // No need for this now, as we are dealing with this on the "Setup2FA" page
-//          //if(loggedInUser.tfaEnabled && loggedInUser.token)
-//          //    return next("/login-2fa");
-//      }
-//  }
+	//          // No need for this now, as we are dealing with this on the "Setup2FA" page
+	//          //if(loggedInUser.tfaEnabled && loggedInUser.token)
+	//          //    return next("/login-2fa");
+	//      }
+	//  }
 
-//  next();
-//});
+	next();
+});
 
 export default router;
