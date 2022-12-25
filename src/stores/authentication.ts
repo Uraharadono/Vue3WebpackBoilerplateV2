@@ -89,19 +89,22 @@ export const authenticationStore = defineStore('authUser', {
 
 		//	commit('logout');
 		//},
-		//async forgotPassword({ dispatch, commit }, email) {
-		//	const response = await ajax
-		//		.post(`/api/Auth/ForgotPassword`, { email: email })
-		//		.then((response) => {
-		//			dispatch('alert/success', 'We have sent further instructions to your email !', {
-		//				root: true,
-		//			});
-		//		})
-		//		.catch((e) => {
-		//			console.error(e);
-		//			dispatch('alert/danger', e[0], { root: true });
-		//		});
-		//},
+		async forgotPassword(email: string) {
+			console.log('tu je');
+			return await ajax
+				.post(`/api/Auth/ForgotPassword`, { email: email })
+				.then((innerResponse: any) => {
+					console.log(innerResponse);
+					console.info('We have sent further instructions to your email !');
+					//dispatch('alert/success', 'We have sent further instructions to your email !', {
+					//	root: true,
+					// });
+				})
+				.catch((e: any) => {
+					console.error(e);
+					// dispatch('alert/danger', e[0], { root: true });
+				});
+		},
 		//resetPassword({ dispatch, commit }, data) {
 		//	return ajax
 		//		.post(`/api/Auth/ResetPassword`, data)

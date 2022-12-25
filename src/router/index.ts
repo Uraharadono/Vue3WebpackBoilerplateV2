@@ -86,11 +86,11 @@ const routes: Array<RouteRecordRaw> = [
 	//	name: 'Register',
 	//	component: () => import(/* webpackChunkName: "auth" */ '../views/auth/Register.vue'),
 	//},
-	//{
-	//	path: '/forgot-password',
-	//	name: 'Forgot password',
-	//	component: () => import(/* webpackChunkName: "auth" */ '../views/auth/ForgotPassword.vue'),
-	//},
+	{
+		path: '/forgot-password',
+		name: 'Forgot password',
+		component: () => import(/* webpackChunkName: "auth" */ '../views/auth/ForgotPassword.vue'),
+	},
 	//{
 	//	path: '/reset-password',
 	//	name: 'Reset password',
