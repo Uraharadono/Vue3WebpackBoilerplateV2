@@ -67,9 +67,12 @@
 import { useVuelidate } from '@vuelidate/core';
 import { required, minLength, email } from '@vuelidate/validators';
 // import { mapGetters, mapActions } from "vuex";
-import ComponentLoader from '@/components/ComponentLoader.vue';
 // import { authentication } from '@/store/modules/authentication';
+import ComponentLoader from '@/components/ComponentLoader.vue';
 // import { ref, onMounted, computed } from 'vue';
+
+import { mapActions } from 'pinia';
+import { authenticationStore } from '@/stores/authentication';
 
 export default {
 	name: 'Login',
@@ -98,19 +101,20 @@ export default {
 			},
 		};
 	},
-
-	//computed: {
-	//    loggingIn() {
-	//        return this.$store.state.authentication.status.loggingIn;
-	//    },
-	//},
+	computed: {
+		//loggingIn() {
+		//    return this.$store.state.authentication.status.loggingIn;
+		//},
+		// authenticationStore
+	},
 	created() {
 		// reset login status
 		// this.$store.dispatch('authentication/logout'); // this won't work like shown in example
 		// this.logout();
 	},
 	methods: {
-		// ...mapActions(["login", "logout"]),
+		...mapActions(authenticationStore, { login: 'login' }),
+		// ...mapActions([authenticationStore, 'login']),
 		async handleSubmit() {
 			await this.v$.$touch();
 			// const result = await this.v$.$validate(); // can also be used like so, if "result" is false, something is wrong
@@ -118,17 +122,16 @@ export default {
 
 			console.log('proslo je');
 
-			//this.isLoading = true;
-			//// Mapping can be done like this as well: "const { username, password } = this;"
-			//const data = {
-			//    username: this.username,
-			//    email: this.username,
-			//    password: this.password,
-			//    rememberMe: this.rememberMe
-			//};
-			//// await this.login(data);
-			//await this.authentication.login(data);
-			//this.isLoading = false;
+			this.isLoading = true;
+			// Mapping can be done like this as well: "const { username, password } = this;"
+			const data = {
+				username: this.username,
+				email: this.username,
+				password: this.password,
+				rememberMe: this.rememberMe,
+			};
+			await this.login(data);
+			this.isLoading = false;
 		},
 		toggleRememberMe() {
 			this.rememberMe = !this.rememberMe;
