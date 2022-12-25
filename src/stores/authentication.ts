@@ -33,10 +33,6 @@ export const authenticationStore = defineStore('authUser', {
 	},
 	actions: {
 		async login(data: object) {
-			//console.log(data);
-			//this.loginSuccess(data);
-			//return;
-
 			return ajax
 				.post(`/api/Auth/Login`, data)
 				.then((response: any) => {
