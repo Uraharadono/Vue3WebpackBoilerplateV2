@@ -10,7 +10,7 @@ import { defineStore } from 'pinia';
 
 interface State {
 	status: object | null;
-	user?: object;
+	user?: any;
 	firstName: string;
 	rememberMe: boolean;
 }
@@ -33,6 +33,11 @@ export const authenticationStore = defineStore('authUser', {
 	},
 	actions: {
 		async login(data: object) {
+			//this.status = { loggingIn: true };
+			//this.user = data.username;
+			//this.email = data.email;
+			//this.rememberMe = data.rememberMe;
+
 			return ajax
 				.post(`/api/Auth/Login`, data)
 				.then((response: any) => {
@@ -83,14 +88,17 @@ export const authenticationStore = defineStore('authUser', {
 		//			dispatch('alert/danger', e[0], { root: true });
 		//		});
 		//},
-		//logout({ commit }) {
-		//	// remove user from local storage to log user out
-		//	localStorage.removeItem('currentUser');
+		logout() {
+			// remove user from local storage to log user out
+			localStorage.removeItem('currentUser');
+			// easily reset state using `$reset`
+			this.$reset();
 
-		//	commit('logout');
-		//},
+			// old way of doing things
+			//  state.status = {};
+			//  state.user = null;
+		},
 		async forgotPassword(email: string) {
-			console.log('tu je');
 			return await ajax
 				.post(`/api/Auth/ForgotPassword`, { email: email })
 				.then((innerResponse: any) => {
@@ -119,19 +127,6 @@ export const authenticationStore = defineStore('authUser', {
 				});
 		},
 
-		//loginRequest(state, data) {
-		//	state.status = { loggingIn: true };
-		//	state.user = data.username;
-
-		//	state.email = data.email;
-		//	state.rememberMe = data.rememberMe;
-		//},
-
-		//loginFailure(state) {
-		//	state.status = {};
-		//	state.user = null;
-		//},
-
 		//clearUser() {
 		//	// easily reset state using `$reset`
 		//	this.$reset();
@@ -140,7 +135,6 @@ export const authenticationStore = defineStore('authUser', {
 		//	//  state.status = {};
 		//	//  state.user = null;
 		//},
-
 		//// no context as first argument, use `this` instead
 		//async loadUser (id: number) {
 		//  if (this.userId !== null) throw new Error('Already logged in')
