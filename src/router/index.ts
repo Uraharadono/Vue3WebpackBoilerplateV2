@@ -66,6 +66,7 @@ const routes: Array<RouteRecordRaw> = [
 		],
 	},
 
+	// Authenticaton
 	{
 		path: '/login',
 		name: 'Login',
@@ -76,11 +77,11 @@ const routes: Array<RouteRecordRaw> = [
 	//	name: 'Login2FA',
 	//	component: () => import(/* webpackChunkName: "auth" */ '../views/auth/Login2FA.vue'),
 	//},
-	//{
-	//	path: '/2fa-setup',
-	//	name: 'Setup2FA',
-	//	component: () => import(/* webpackChunkName: "auth" */ '../views/auth/Setup2FA.vue'),
-	//},
+	{
+		path: '/2fa-setup',
+		name: 'Setup2FA',
+		component: () => import(/* webpackChunkName: "auth" */ '../views/auth/Setup2FA.vue'),
+	},
 	//{
 	//	path: '/register',
 	//	name: 'Register',

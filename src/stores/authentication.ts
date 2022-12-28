@@ -16,6 +16,7 @@ interface State {
 	user?: any;
 	firstName: string;
 	rememberMe: boolean;
+	email: string;
 }
 
 const localStorageuser = JSON.parse(localStorage.getItem('currentUser'));
@@ -30,15 +31,16 @@ export const authenticationStore = defineStore('authUser', {
 		user: initialState.user,
 		firstName: '',
 		rememberMe: false,
+		email: '', // have to save it in case of 2fa
 	}),
 	getters: {
-		// No getter
+		getEmail: (state) => state.email,
 	},
 	actions: {
 		async login(data: object) {
 			//this.status = { loggingIn: true };
 			//this.user = data.username;
-			//this.email = data.email;
+			this.email = data.email; // // have to save it in case of 2fa
 			//this.rememberMe = data.rememberMe;
 
 			return ajax

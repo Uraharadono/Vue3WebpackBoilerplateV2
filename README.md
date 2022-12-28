@@ -10,6 +10,7 @@ Also used/implemented:
  - `Pinia 2` 
  - `Vuelidate`
  - `NProgress`
+ - `Vue Qr code`
  - `Bootstrap 5`  - using only `CSS` modules we need, not whole bundle and not `JS` stuff (we are going to implement those our-self)
  - Custom **Tabs component** - With support for both **route (navigation)** and **component content** based tab content. My own authoring, quite simple, lightweight, easy to use. Please credit if you use it. 
  - Custom **Xhr File Upload component** - this component supports quite the amount of history while also using my implementation of `Form Post` to post data to server
