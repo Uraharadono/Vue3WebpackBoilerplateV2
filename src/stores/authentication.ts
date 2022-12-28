@@ -4,9 +4,12 @@ import router from '@/router';
 import ajax from '@/common/ajax';
 import { isNullOrWs } from '@/common/methods';
 import { defineStore } from 'pinia';
+import { alertStore } from '@/stores/alert';
 // import { useAuthPreferencesStore } from './auth-preferences'
 // import { useAuthEmailStore } from './auth-email'
 // import vuexStore from '@/store' // for gradual conversion, see fullUserDetails
+
+const aStore = alertStore(); // https://pinia.vuejs.org/core-concepts/actions.html#accessing-other-stores-actions
 
 interface State {
 	status: object | null;
@@ -53,7 +56,7 @@ export const authenticationStore = defineStore('authUser', {
 				})
 				.catch((e: any) => {
 					console.error(e);
-					// dispatch('alert/danger', e[0], { root: true });
+					aStore.danger(e[0]);
 				});
 		},
 		loginSuccess(user: object) {
@@ -85,7 +88,7 @@ export const authenticationStore = defineStore('authUser', {
 		//		})
 		//		.catch((e) => {
 		//			console.error(e);
-		//			dispatch('alert/danger', e[0], { root: true });
+		// 			aStore.danger(e[0]);
 		//		});
 		//},
 		logout() {
@@ -103,14 +106,12 @@ export const authenticationStore = defineStore('authUser', {
 				.post(`/api/Auth/ForgotPassword`, { email: email })
 				.then((innerResponse: any) => {
 					console.log(innerResponse);
-					console.info('We have sent further instructions to your email !');
-					//dispatch('alert/success', 'We have sent further instructions to your email !', {
-					//	root: true,
-					// });
+					// console.info('We have sent further instructions to your email !');
+					aStore.success('We have sent further instructions to your email !');
 				})
 				.catch((e: any) => {
 					console.error(e);
-					// dispatch('alert/danger', e[0], { root: true });
+					aStore.danger(e[0]);
 				});
 		},
 		resetPassword(data: any) {
@@ -118,12 +119,12 @@ export const authenticationStore = defineStore('authUser', {
 				.post(`/api/Auth/ResetPassword`, data)
 				.then((response: any) => {
 					console.log(response);
-					// dispatch('alert/success', 'Password reset! Please login to access your account.', { root: true, });
+					aStore.success('Password reset! Please login to access your account.');
 					router.push('login');
 				})
 				.catch((e: any) => {
 					console.error(e);
-					// dispatch('alert/danger', e[0], { root: true });
+					aStore.danger(e[0]);
 				});
 		},
 
