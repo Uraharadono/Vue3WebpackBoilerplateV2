@@ -4,12 +4,10 @@ import router from '@/router';
 import ajax from '@/common/ajax';
 import { isNullOrWs } from '@/common/methods';
 import { defineStore } from 'pinia';
-import { alertStore } from '@/stores/alert';
-// import { useAuthPreferencesStore } from './auth-preferences'
-// import { useAuthEmailStore } from './auth-email'
-// import vuexStore from '@/store' // for gradual conversion, see fullUserDetails
+import alertStore from '@/stores/alert';
 
-const aStore = alertStore(); // https://pinia.vuejs.org/core-concepts/actions.html#accessing-other-stores-actions
+// This cannot be done, as it was causing me the errors: https://github.com/vuejs/pinia/discussions/1900
+// const aStore = alertStore(); // https://pinia.vuejs.org/core-concepts/actions.html#accessing-other-stores-actions
 
 interface State {
 	status: object | null;
@@ -58,7 +56,7 @@ export const authenticationStore = defineStore('authUser', {
 				})
 				.catch((e: any) => {
 					console.error(e);
-					aStore.danger(e[0]);
+					alertStore().danger(e[0]);
 				});
 		},
 		loginSuccess(user: object) {
@@ -91,7 +89,7 @@ export const authenticationStore = defineStore('authUser', {
 				})
 				.catch((e: string[]) => {
 					console.error(e);
-					aStore.danger(e[0]);
+					alertStore().danger(e[0]);
 				});
 		},
 		logout() {
@@ -110,11 +108,11 @@ export const authenticationStore = defineStore('authUser', {
 				.then((innerResponse: any) => {
 					console.log(innerResponse);
 					// console.info('We have sent further instructions to your email !');
-					aStore.success('We have sent further instructions to your email !');
+					alertStore().success('We have sent further instructions to your email !');
 				})
 				.catch((e: any) => {
 					console.error(e);
-					aStore.danger(e[0]);
+					alertStore().danger(e[0]);
 				});
 		},
 		resetPassword(data: any) {
@@ -122,12 +120,12 @@ export const authenticationStore = defineStore('authUser', {
 				.post(`/api/Auth/ResetPassword`, data)
 				.then((response: any) => {
 					console.log(response);
-					aStore.success('Password reset! Please login to access your account.');
+					alertStore().success('Password reset! Please login to access your account.');
 					router.push('login');
 				})
 				.catch((e: any) => {
 					console.error(e);
-					aStore.danger(e[0]);
+					alertStore().danger(e[0]);
 				});
 		},
 	},

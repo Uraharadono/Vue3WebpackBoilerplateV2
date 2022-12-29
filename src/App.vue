@@ -4,7 +4,13 @@
 		<router-link to="/playground/toggle">Playground</router-link> |
 		<router-link to="/login">Login</router-link> |
 		<!--eslint-disable-next-line prettier/prettier-->
-		| {{ currentUser.token }}
+		| 
+		<i
+			v-if="currentUser"
+			class="fa-solid fa-right-from-bracket"
+			style="cursor: pointer"
+			@click="doLogout"
+		></i>
 	</div>
 
 	<!-- ALERT Component to display static messages on our screen.  -->
@@ -21,10 +27,11 @@
 
 	<router-view />
 </template>
-<script>
+<script lang="ts">
 /* eslint-disable @typescript-eslint/no-unused-vars */
 import { mapActions, mapState } from 'pinia';
-import { alertStore } from '@/stores/alert';
+import alertStore from '@/stores/alert';
+import { authenticationStore } from '@/stores/authentication';
 
 export default {
 	computed: {
@@ -57,6 +64,11 @@ export default {
 	methods: {
 		...mapActions(alertStore, ['clear']),
 		...mapState(alertStore, ['getState']),
+		...mapActions(authenticationStore, { logout: 'logout' }),
+		doLogout() {
+			this.logout();
+			this.$router.go(); // reload page to setup menu and redirect to login
+		},
 	},
 };
 </script>

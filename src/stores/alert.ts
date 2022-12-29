@@ -8,10 +8,11 @@ interface State {
 	icon: string;
 }
 
-export const alertStore = defineStore('alertStore', {
+// No need to add "Store" suffix to id (first param of defineStore), it will be added by default: https://pinia.vuejs.org/cookbook/options-api.html#giving-access-to-the-whole-store
+const useAlertStore = defineStore('alert', {
 	state: (): State => ({
 		type: '',
-		message: '',
+		message: 'NESTO',
 		icon: '',
 	}),
 	getters: {
@@ -80,3 +81,5 @@ export const alertStore = defineStore('alertStore', {
 		},
 	},
 });
+
+export default useAlertStore;
