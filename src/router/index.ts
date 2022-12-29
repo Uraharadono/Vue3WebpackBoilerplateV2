@@ -82,11 +82,6 @@ const routes: Array<RouteRecordRaw> = [
 		name: 'Login2FA',
 		component: () => import(/* webpackChunkName: "auth" */ '../views/auth/Login2FA.vue'),
 	},
-	//{
-	//	path: '/register',
-	//	name: 'Register',
-	//	component: () => import(/* webpackChunkName: "auth" */ '../views/auth/Register.vue'),
-	//},
 	{
 		path: '/forgot-password',
 		name: 'Forgot password',
@@ -96,6 +91,16 @@ const routes: Array<RouteRecordRaw> = [
 		path: '/reset-password',
 		name: 'Reset password',
 		component: () => import(/* webpackChunkName: "auth" */ '../views/auth/ResetPassword.vue'),
+	},
+	{
+		path: '/register',
+		name: 'Register',
+		component: () => import(/* webpackChunkName: "auth" */ '../views/auth/Register.vue'),
+	},
+	{
+		path: '/confirm-email',
+		name: 'Confirm email',
+		component: () => import(/* webpackChunkName: "auth" */ '../views/auth/ConfirmEmail.vue'),
 	},
 
 	//// Terms of service

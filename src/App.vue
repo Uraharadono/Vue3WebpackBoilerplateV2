@@ -42,7 +42,7 @@ export default {
 		currentUser: {
 			// getter
 			get() {
-				const localStorageUser = JSON.parse(localStorage.getItem('currentUser'));
+				const localStorageUser = JSON.parse(localStorage.getItem('currentUser') ?? '{}');
 				return localStorageUser;
 			},
 			// setter

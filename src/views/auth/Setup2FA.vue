@@ -204,7 +204,7 @@ export default {
 				this.authenticatorUri = response.authenticatorUri;
 			})
 			.catch((error) => {
-				console.log(error);
+				console.error(error);
 			})
 			.finally(() => {
 				this.isLoading = false;
@@ -233,10 +233,11 @@ export default {
 					// Couple of points here:
 					// I need to redirect to main menu again like this so it reloads navigation, in order to populate the main menu with events and proper visibility
 					// I am adding "http" in fron cause of: https://stackoverflow.com/questions/64797802/what-is-this-scheme-dont-have-a-registered-handler-error
-					window.location.replace('https://' + location.host);
+					// window.location.replace('https://' + location.host);
+					window.location.replace('http://' + location.host);
 				})
 				.catch((error) => {
-					console.log(error);
+					console.error(error);
 				})
 				.finally(() => {
 					this.isLoading = false;

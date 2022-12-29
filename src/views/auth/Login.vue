@@ -1,6 +1,7 @@
 <template>
 	<div class="container" style="width: 22rem">
 		<ComponentLoader v-show="isLoading" />
+		<h5>Login</h5>
 		<form @submit.prevent="handleSubmit">
 			<!-- Email input -->
 			<div class="form-outline mb-4" :class="[v$.username.$error ? 'is-invalid' : '', '']">
@@ -55,9 +56,9 @@
 			<button type="submit" class="btn btn-primary btn-block mb-4">Sign in</button>
 
 			<!-- Register buttons -->
-			<!--<div class="text-center">
-			<p>Not a member? <a href="#!">Register</a></p>
-		</div>-->
+			<div class="text-center">
+				<p>Not a member? <router-link to="/register">Register</router-link> |</p>
+			</div>
 		</form>
 	</div>
 </template>

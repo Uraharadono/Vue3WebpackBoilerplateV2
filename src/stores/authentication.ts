@@ -17,7 +17,7 @@ interface State {
 	email: string;
 }
 
-const localStorageuser = JSON.parse(localStorage.getItem('currentUser'));
+const localStorageuser = JSON.parse(localStorage.getItem('currentUser') ?? '{}');
 const initialState = localStorageuser
 	? { status: { loggedIn: true }, localStorageuser }
 	: { status: {}, user: null };
@@ -35,7 +35,7 @@ export const authenticationStore = defineStore('authUser', {
 		getEmail: (state) => state.email,
 	},
 	actions: {
-		async login(data: object) {
+		async login(data: any) {
 			//this.status = { loggingIn: true };
 			this.user = data.username;
 			this.email = data.email; // // have to save it in case of 2fa
@@ -116,17 +116,50 @@ export const authenticationStore = defineStore('authUser', {
 				});
 		},
 		resetPassword(data: any) {
+			return (
+				ajax
+					.post(`/api/Auth/ResetPassword`, data)
+					// eslint-disable-next-line @typescript-eslint/no-unused-vars
+					.then((response: any) => {
+						alertStore().success('Password reset! Please login to access your account.');
+						router.push('login');
+					})
+					.catch((e: any) => {
+						console.error(e);
+						alertStore().danger(e[0]);
+					})
+			);
+		},
+		register(data: any) {
 			return ajax
-				.post(`/api/Auth/ResetPassword`, data)
+				.post(`/api/Auth/Register`, data)
 				.then((response: any) => {
 					console.log(response);
 					alertStore().success('Password reset! Please login to access your account.');
-					router.push('login');
+					// it should be like below, so user should receive email, then activate account, then proceed to login.
+					// however, this is poco or in other words testing, so server will return us the return url
+					// router.push('login');
+					window.location = response;
 				})
 				.catch((e: any) => {
 					console.error(e);
 					alertStore().danger(e[0]);
 				});
+		},
+		async confirmEmail(data: any) {
+			return (
+				ajax
+					.post(`/api/Auth/ConfirmEmail`, data)
+					// eslint-disable-next-line @typescript-eslint/no-unused-vars
+					.then((response: any) => {
+						alertStore().success('Account activated! Please login to access your account.');
+						router.push('login');
+					})
+					.catch((e: any) => {
+						console.error(e);
+						alertStore().danger(e[0]);
+					})
+			);
 		},
 	},
 });
