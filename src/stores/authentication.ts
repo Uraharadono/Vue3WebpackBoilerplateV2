@@ -39,9 +39,9 @@ export const authenticationStore = defineStore('authUser', {
 	actions: {
 		async login(data: object) {
 			//this.status = { loggingIn: true };
-			//this.user = data.username;
+			this.user = data.username;
 			this.email = data.email; // // have to save it in case of 2fa
-			//this.rememberMe = data.rememberMe;
+			this.rememberMe = data.rememberMe;
 
 			return ajax
 				.post(`/api/Auth/Login`, data)
@@ -72,27 +72,28 @@ export const authenticationStore = defineStore('authUser', {
 			// Couple of points here:
 			// I need to redirect to main menu again like this so it reloads navigation, in order to populate the main menu with events and proper visibility
 			// I am adding "http" in fron cause of: https://stackoverflow.com/questions/64797802/what-is-this-scheme-dont-have-a-registered-handler-error
-			window.location.replace('https://' + location.host + returnUrl);
+			// window.location.replace('https://' + location.host + returnUrl);
+			window.location.replace('http://' + location.host + returnUrl);
 		},
-		//loginWith2fa({ dispatch, commit }, data) {
-		//	const postData = {
-		//		twoFactorCode: data.twoFactorCode,
-		//		userName: this.user,
-		//		email: this.email,
-		//		rememberMe: this.rememberMe,
-		//	};
+		loginWith2fa(data: any) {
+			const postData = {
+				twoFactorCode: data.twoFactorCode,
+				userName: this.user,
+				email: this.email,
+				rememberMe: this.rememberMe,
+			};
 
-		//	return ajax
-		//		.post(`/api/Auth/LoginWith2fa`, postData)
-		//		.then((response) => {
-		//			localStorage.setItem('currentUser', JSON.stringify(response));
-		//			commit('loginSuccess', response);
-		//		})
-		//		.catch((e) => {
-		//			console.error(e);
-		// 			aStore.danger(e[0]);
-		//		});
-		//},
+			return ajax
+				.post(`/api/Auth/LoginWith2fa`, postData)
+				.then((response: object) => {
+					localStorage.setItem('currentUser', JSON.stringify(response));
+					this.loginSuccess(response);
+				})
+				.catch((e: string[]) => {
+					console.error(e);
+					aStore.danger(e[0]);
+				});
+		},
 		logout() {
 			// remove user from local storage to log user out
 			localStorage.removeItem('currentUser');
@@ -129,30 +130,5 @@ export const authenticationStore = defineStore('authUser', {
 					aStore.danger(e[0]);
 				});
 		},
-
-		//clearUser() {
-		//	// easily reset state using `$reset`
-		//	this.$reset();
-
-		//	// old way of doing things
-		//	//  state.status = {};
-		//	//  state.user = null;
-		//},
-		//// no context as first argument, use `this` instead
-		//async loadUser (id: number) {
-		//  if (this.userId !== null) throw new Error('Already logged in')
-		//  const res = await api.user.load(id)
-		//  this.updateUser(res)
-		//},
-		//// mutations can now become actions, instead of `state` as first argument use `this`
-		//updateUser (payload) {
-		//  this.firstName = payload.firstName
-		//  this.lastName = payload.lastName
-		//  this.userId = payload.userId
-		//},
-		//// easily reset state using `$reset`
-		//clearUser () {
-		//  this.$reset()
-		//}
 	},
 });

@@ -72,15 +72,15 @@ const routes: Array<RouteRecordRaw> = [
 		name: 'Login',
 		component: () => import(/* webpackChunkName: "auth" */ '../views/auth/Login.vue'),
 	},
-	//{
-	//	path: '/login-2fa',
-	//	name: 'Login2FA',
-	//	component: () => import(/* webpackChunkName: "auth" */ '../views/auth/Login2FA.vue'),
-	//},
 	{
 		path: '/2fa-setup',
 		name: 'Setup2FA',
 		component: () => import(/* webpackChunkName: "auth" */ '../views/auth/Setup2FA.vue'),
+	},
+	{
+		path: '/login-2fa',
+		name: 'Login2FA',
+		component: () => import(/* webpackChunkName: "auth" */ '../views/auth/Login2FA.vue'),
 	},
 	//{
 	//	path: '/register',

@@ -3,6 +3,8 @@
 		<router-link to="/">Home</router-link> | <router-link to="/about">About</router-link> |
 		<router-link to="/playground/toggle">Playground</router-link> |
 		<router-link to="/login">Login</router-link> |
+		<!--eslint-disable-next-line prettier/prettier-->
+		| {{ currentUser.token }}
 	</div>
 
 	<!-- ALERT Component to display static messages on our screen.  -->
@@ -31,6 +33,18 @@ export default {
 				data: this.getState(),
 				close: () => this.clear(),
 			};
+		},
+		currentUser: {
+			// getter
+			get() {
+				const localStorageUser = JSON.parse(localStorage.getItem('currentUser'));
+				return localStorageUser;
+			},
+			// setter
+			set(newValue) {
+				// Note: we are using destructuring assignment syntax here.
+				// [this.firstName, this.lastName] = newValue.split(' ');
+			},
 		},
 	},
 	watch: {
