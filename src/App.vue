@@ -4,13 +4,14 @@
 		<router-link to="/playground/toggle">Playground</router-link> |
 		<router-link to="/login">Login</router-link> |
 		<!--eslint-disable-next-line prettier/prettier-->
-		| 
+		
 		<i
-			v-if="currentUser"
+			v-if="currentUser.token"
 			class="fa-solid fa-right-from-bracket"
 			style="cursor: pointer"
 			@click="doLogout"
 		></i>
+		|
 	</div>
 
 	<!-- Alert Component to display static messages on our screen.  -->

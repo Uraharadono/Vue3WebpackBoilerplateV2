@@ -153,11 +153,16 @@ export const authenticationStore = defineStore('authUser', {
 					// eslint-disable-next-line @typescript-eslint/no-unused-vars
 					.then((response: any) => {
 						alertStore().success('Account activated! Please login to access your account.');
-						router.push('login');
+						// router.push('login');
+						return true;
 					})
 					.catch((e: any) => {
 						console.error(e);
 						alertStore().danger(e[0]);
+						return false;
+					})
+					.finally(() => {
+						return false;
 					})
 			);
 		},
