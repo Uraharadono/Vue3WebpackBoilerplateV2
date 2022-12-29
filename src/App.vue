@@ -13,14 +13,17 @@
 		></i>
 	</div>
 
-	<!-- ALERT Component to display static messages on our screen.  -->
-	<div v-if="alert.data.message" :class="`alert ${alert.data.type} no-margin`">
+	<!-- Alert Component to display static messages on our screen.  -->
+	<!-- access store property from store by store name + const word "Store" -->
+	<!-- https://pinia.vuejs.org/cookbook/options-api.html -->
+	<!-- example for accessing 'appConfig' getCampagne getter -->
+	<div v-if="alertStore.message" :class="`alert ${alertStore.type} no-margin`">
 		<div class="row justify-content-end">
 			<div class="col-4">
-				{{ alert.data.message }}
+				{{ alertStore.message }}
 			</div>
 			<div class="col-4">
-				<i class="fa-solid fa-rectangle-xmark" @click="alert.close" />
+				<i class="fa-solid fa-rectangle-xmark" @click="clearAlert" />
 			</div>
 		</div>
 	</div>
@@ -29,18 +32,13 @@
 </template>
 <script lang="ts">
 /* eslint-disable @typescript-eslint/no-unused-vars */
-import { mapActions, mapState } from 'pinia';
+import { mapActions, mapState, mapStores } from 'pinia';
 import alertStore from '@/stores/alert';
 import { authenticationStore } from '@/stores/authentication';
 
 export default {
 	computed: {
-		alert() {
-			return {
-				data: this.getState(),
-				close: () => this.clear(),
-			};
-		},
+		...mapStores(alertStore),
 		currentUser: {
 			// getter
 			get() {
@@ -58,12 +56,12 @@ export default {
 		// method being used by "alert.js"
 		// TODO: Check if this can be moved to router
 		$route(to, from) {
-			this.clear(); // clear alert on location change
+			this.clearAlert(); // clear alert on location change
 		},
 	},
 	methods: {
-		...mapActions(alertStore, ['clear']),
-		...mapState(alertStore, ['getState']),
+		...mapActions(alertStore, { clearAlert: 'clear' }),
+
 		...mapActions(authenticationStore, { logout: 'logout' }),
 		doLogout() {
 			this.logout();
