@@ -4,8 +4,7 @@ I got idea for this logic and backend one from here: https://github.com/herbat73
 		<div class="container">
 			<div class="row">
 				<div class="text-center">
-					<!-- <h5>Upload Files</h5> -->
-					<h5>Upload een nieuw bestand</h5>
+					<h5>Upload Files</h5>
 				</div>
 				<div class="text-center">
 					<div
@@ -15,8 +14,7 @@ I got idea for this logic and backend one from here: https://github.com/herbat73
 						@dragleave.stop.prevent
 						@dragover.stop.prevent
 					>
-						<!-- <p>Drag and drop or click below to select files</p> -->
-						<p>Klik of sleep een document naar onderstaand vak.</p>
+						<p>Drag and drop or click below to select files</p>
 						<div class="upload-area-padding" @click="browseForFiles" />
 					</div>
 				</div>
@@ -284,6 +282,10 @@ export default {
 };
 </script>
 <style scoped>
+.hidden {
+	display: none !important;
+}
+
 .upload-area-padding {
 	border: 10px dashed #ccc;
 	margin: 20px;

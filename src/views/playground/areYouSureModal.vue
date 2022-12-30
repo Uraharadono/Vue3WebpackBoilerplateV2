@@ -1,11 +1,7 @@
 <template>
 	<div>
 		<AreYouSureModal ref="deleteModalConfirmation" />
-		<button
-			class="btn btn-danger btn-sm"
-			type="button"
-			@click.prevent="deleteInvoicePrompt(invoice)"
-		>
+		<button class="btn btn-danger" type="button" @click.prevent="deleteInvoicePrompt(invoice)">
 			Click me to delete "invoice"
 		</button>
 	</div>

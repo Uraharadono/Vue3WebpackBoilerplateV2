@@ -1,6 +1,7 @@
 <template>
 	<div class="container" style="width: 22rem">
 		<ComponentLoader v-show="isLoading" />
+		<h5>Login</h5>
 		<form @submit.prevent="handleSubmit">
 			<!-- Email input -->
 			<div class="form-outline mb-4" :class="[v$.username.$error ? 'is-invalid' : '', '']">
@@ -55,22 +56,18 @@
 			<button type="submit" class="btn btn-primary btn-block mb-4">Sign in</button>
 
 			<!-- Register buttons -->
-			<!--<div class="text-center">
-			<p>Not a member? <a href="#!">Register</a></p>
-		</div>-->
+			<div class="text-center">
+				<p>Not a member? <router-link to="/register">Register</router-link> |</p>
+			</div>
 		</form>
 	</div>
 </template>
 
 <script>
-// import ajax from '@/common/ajax';
 import { useVuelidate } from '@vuelidate/core';
 import { required, minLength, email } from '@vuelidate/validators';
-// import { mapGetters, mapActions } from "vuex";
-// import { authentication } from '@/store/modules/authentication';
 import ComponentLoader from '@/components/ComponentLoader.vue';
 // import { ref, onMounted, computed } from 'vue';
-
 import { mapActions } from 'pinia';
 import { authenticationStore } from '@/stores/authentication';
 

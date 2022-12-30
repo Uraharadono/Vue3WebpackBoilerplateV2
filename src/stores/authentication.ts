@@ -4,18 +4,20 @@ import router from '@/router';
 import ajax from '@/common/ajax';
 import { isNullOrWs } from '@/common/methods';
 import { defineStore } from 'pinia';
-// import { useAuthPreferencesStore } from './auth-preferences'
-// import { useAuthEmailStore } from './auth-email'
-// import vuexStore from '@/store' // for gradual conversion, see fullUserDetails
+import alertStore from '@/stores/alert';
+
+// This cannot be done, as it was causing me the errors: https://github.com/vuejs/pinia/discussions/1900
+// const aStore = alertStore(); // https://pinia.vuejs.org/core-concepts/actions.html#accessing-other-stores-actions
 
 interface State {
 	status: object | null;
-	user?: object;
+	user?: any;
 	firstName: string;
 	rememberMe: boolean;
+	email: string;
 }
 
-const localStorageuser = JSON.parse(localStorage.getItem('currentUser'));
+const localStorageuser = JSON.parse(localStorage.getItem('currentUser') ?? '{}');
 const initialState = localStorageuser
 	? { status: { loggedIn: true }, localStorageuser }
 	: { status: {}, user: null };
@@ -27,12 +29,18 @@ export const authenticationStore = defineStore('authUser', {
 		user: initialState.user,
 		firstName: '',
 		rememberMe: false,
+		email: '', // have to save it in case of 2fa
 	}),
 	getters: {
-		// No getter
+		getEmail: (state) => state.email,
 	},
 	actions: {
-		async login(data: object) {
+		async login(data: any) {
+			//this.status = { loggingIn: true };
+			this.user = data.username;
+			this.email = data.email; // // have to save it in case of 2fa
+			this.rememberMe = data.rememberMe;
+
 			return ajax
 				.post(`/api/Auth/Login`, data)
 				.then((response: any) => {
@@ -48,7 +56,7 @@ export const authenticationStore = defineStore('authUser', {
 				})
 				.catch((e: any) => {
 					console.error(e);
-					// dispatch('alert/danger', e[0], { root: true });
+					alertStore().danger(e[0]);
 				});
 		},
 		loginSuccess(user: object) {
@@ -62,98 +70,101 @@ export const authenticationStore = defineStore('authUser', {
 			// Couple of points here:
 			// I need to redirect to main menu again like this so it reloads navigation, in order to populate the main menu with events and proper visibility
 			// I am adding "http" in fron cause of: https://stackoverflow.com/questions/64797802/what-is-this-scheme-dont-have-a-registered-handler-error
-			window.location.replace('https://' + location.host + returnUrl);
+			// window.location.replace('https://' + location.host + returnUrl);
+			window.location.replace('http://' + location.host + returnUrl);
 		},
-		//loginWith2fa({ dispatch, commit }, data) {
-		//	const postData = {
-		//		twoFactorCode: data.twoFactorCode,
-		//		userName: this.user,
-		//		email: this.email,
-		//		rememberMe: this.rememberMe,
-		//	};
+		loginWith2fa(data: any) {
+			const postData = {
+				twoFactorCode: data.twoFactorCode,
+				userName: this.user,
+				email: this.email,
+				rememberMe: this.rememberMe,
+			};
 
-		//	return ajax
-		//		.post(`/api/Auth/LoginWith2fa`, postData)
-		//		.then((response) => {
-		//			localStorage.setItem('currentUser', JSON.stringify(response));
-		//			commit('loginSuccess', response);
-		//		})
-		//		.catch((e) => {
-		//			console.error(e);
-		//			dispatch('alert/danger', e[0], { root: true });
-		//		});
-		//},
-		//logout({ commit }) {
-		//	// remove user from local storage to log user out
-		//	localStorage.removeItem('currentUser');
+			return ajax
+				.post(`/api/Auth/LoginWith2fa`, postData)
+				.then((response: object) => {
+					localStorage.setItem('currentUser', JSON.stringify(response));
+					this.loginSuccess(response);
+				})
+				.catch((e: string[]) => {
+					console.error(e);
+					alertStore().danger(e[0]);
+				});
+		},
+		logout() {
+			// remove user from local storage to log user out
+			localStorage.removeItem('currentUser');
+			// easily reset state using `$reset`
+			this.$reset();
 
-		//	commit('logout');
-		//},
-		//async forgotPassword({ dispatch, commit }, email) {
-		//	const response = await ajax
-		//		.post(`/api/Auth/ForgotPassword`, { email: email })
-		//		.then((response) => {
-		//			dispatch('alert/success', 'We have sent further instructions to your email !', {
-		//				root: true,
-		//			});
-		//		})
-		//		.catch((e) => {
-		//			console.error(e);
-		//			dispatch('alert/danger', e[0], { root: true });
-		//		});
-		//},
-		//resetPassword({ dispatch, commit }, data) {
-		//	return ajax
-		//		.post(`/api/Auth/ResetPassword`, data)
-		//		.then((response) => {
-		//			dispatch('alert/success', 'Password reset! Please login to access your account.', {
-		//				root: true,
-		//			});
-		//			router.push('login');
-		//		})
-		//		.catch((e) => {
-		//			console.error(e);
-		//			dispatch('alert/danger', e[0], { root: true });
-		//		});
-		//},
-
-		//loginRequest(state, data) {
-		//	state.status = { loggingIn: true };
-		//	state.user = data.username;
-
-		//	state.email = data.email;
-		//	state.rememberMe = data.rememberMe;
-		//},
-
-		//loginFailure(state) {
-		//	state.status = {};
-		//	state.user = null;
-		//},
-
-		//clearUser() {
-		//	// easily reset state using `$reset`
-		//	this.$reset();
-
-		//	// old way of doing things
-		//	//  state.status = {};
-		//	//  state.user = null;
-		//},
-
-		//// no context as first argument, use `this` instead
-		//async loadUser (id: number) {
-		//  if (this.userId !== null) throw new Error('Already logged in')
-		//  const res = await api.user.load(id)
-		//  this.updateUser(res)
-		//},
-		//// mutations can now become actions, instead of `state` as first argument use `this`
-		//updateUser (payload) {
-		//  this.firstName = payload.firstName
-		//  this.lastName = payload.lastName
-		//  this.userId = payload.userId
-		//},
-		//// easily reset state using `$reset`
-		//clearUser () {
-		//  this.$reset()
-		//}
+			// old way of doing things
+			//  state.status = {};
+			//  state.user = null;
+		},
+		async forgotPassword(email: string) {
+			return await ajax
+				.post(`/api/Auth/ForgotPassword`, { email: email })
+				.then((innerResponse: any) => {
+					console.log(innerResponse);
+					// console.info('We have sent further instructions to your email !');
+					alertStore().success('We have sent further instructions to your email !');
+				})
+				.catch((e: any) => {
+					console.error(e);
+					alertStore().danger(e[0]);
+				});
+		},
+		resetPassword(data: any) {
+			return (
+				ajax
+					.post(`/api/Auth/ResetPassword`, data)
+					// eslint-disable-next-line @typescript-eslint/no-unused-vars
+					.then((response: any) => {
+						alertStore().success('Password reset! Please login to access your account.');
+						router.push('login');
+					})
+					.catch((e: any) => {
+						console.error(e);
+						alertStore().danger(e[0]);
+					})
+			);
+		},
+		register(data: any) {
+			return ajax
+				.post(`/api/Auth/Register`, data)
+				.then((response: any) => {
+					console.log(response);
+					alertStore().success('Password reset! Please login to access your account.');
+					// it should be like below, so user should receive email, then activate account, then proceed to login.
+					// however, this is poco or in other words testing, so server will return us the return url
+					// router.push('login');
+					window.location = response;
+				})
+				.catch((e: any) => {
+					console.error(e);
+					alertStore().danger(e[0]);
+				});
+		},
+		async confirmEmail(data: any) {
+			return (
+				ajax
+					.post(`/api/Auth/ConfirmEmail`, data)
+					// eslint-disable-next-line @typescript-eslint/no-unused-vars
+					.then((response: any) => {
+						alertStore().success('Account activated! Please login to access your account.');
+						// router.push('login');
+						return true;
+					})
+					.catch((e: any) => {
+						console.error(e);
+						alertStore().danger(e[0]);
+						return false;
+					})
+					.finally(() => {
+						return false;
+					})
+			);
+		},
 	},
 });

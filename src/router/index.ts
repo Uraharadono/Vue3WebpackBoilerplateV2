@@ -66,36 +66,48 @@ const routes: Array<RouteRecordRaw> = [
 		],
 	},
 
+	// Authenticaton
+	{
+		path: '/authentication-info',
+		name: 'Authentication Info',
+		component: () =>
+			import(/* webpackChunkName: "auth" */ '../views/authentication-info/AuthenticationInfo.vue'),
+	},
 	{
 		path: '/login',
 		name: 'Login',
 		component: () => import(/* webpackChunkName: "auth" */ '../views/auth/Login.vue'),
 	},
-	//{
-	//	path: '/login-2fa',
-	//	name: 'Login2FA',
-	//	component: () => import(/* webpackChunkName: "auth" */ '../views/auth/Login2FA.vue'),
-	//},
-	//{
-	//	path: '/2fa-setup',
-	//	name: 'Setup2FA',
-	//	component: () => import(/* webpackChunkName: "auth" */ '../views/auth/Setup2FA.vue'),
-	//},
-	//{
-	//	path: '/register',
-	//	name: 'Register',
-	//	component: () => import(/* webpackChunkName: "auth" */ '../views/auth/Register.vue'),
-	//},
-	//{
-	//	path: '/forgot-password',
-	//	name: 'Forgot password',
-	//	component: () => import(/* webpackChunkName: "auth" */ '../views/auth/ForgotPassword.vue'),
-	//},
-	//{
-	//	path: '/reset-password',
-	//	name: 'Reset password',
-	//	component: () => import(/* webpackChunkName: "auth" */ '../views/auth/ResetPassword.vue'),
-	//},
+	{
+		path: '/2fa-setup',
+		name: 'Setup2FA',
+		component: () => import(/* webpackChunkName: "auth" */ '../views/auth/Setup2FA.vue'),
+	},
+	{
+		path: '/login-2fa',
+		name: 'Login2FA',
+		component: () => import(/* webpackChunkName: "auth" */ '../views/auth/Login2FA.vue'),
+	},
+	{
+		path: '/forgot-password',
+		name: 'Forgot password',
+		component: () => import(/* webpackChunkName: "auth" */ '../views/auth/ForgotPassword.vue'),
+	},
+	{
+		path: '/reset-password',
+		name: 'Reset password',
+		component: () => import(/* webpackChunkName: "auth" */ '../views/auth/ResetPassword.vue'),
+	},
+	{
+		path: '/register',
+		name: 'Register',
+		component: () => import(/* webpackChunkName: "auth" */ '../views/auth/Register.vue'),
+	},
+	{
+		path: '/confirm-email',
+		name: 'Confirm email',
+		component: () => import(/* webpackChunkName: "auth" */ '../views/auth/ConfirmEmail.vue'),
+	},
 
 	//// Terms of service
 	//{
@@ -129,32 +141,30 @@ router.afterEach(() => {
 
 // This logic should be uncomented, but since not everyone wants to use components to use login as well, I am keeping it here, and I will mention it in the readme
 router.beforeEach((to, from, next) => {
-	//  // redirect to login page if not logged in and trying to access a restricted page
-	//  const publicPages = [
-	//      "/login",
-	//      "/login-2fa",
-	//      "/2fa-setup",
-	//      "/register",
-	//      "/forgot-password",
-	//      "/reset-password",
-	//  ];
-	//  const authRequired = !publicPages.includes(to.path);
-	//  const loggedInUser = localStorage.getItem("currentUser");
+	//// redirect to login page if not logged in and trying to access a restricted page
+	//const publicPages = [
+	//	'/login',
+	//	'/login-2fa',
+	//	'/2fa-setup',
+	//	'/register',
+	//	'/forgot-password',
+	//	'/reset-password',
+	//];
+	//const authRequired = !publicPages.includes(to.path);
+	//const loggedInUser = JSON.parse(localStorage.getItem('currentUser') ?? '{}');
+	//const userHasToken = loggedInUser.tfaEnabled === false ? true : loggedInUser.token != null;
 
-	//  console.log(authRequired)
-	//  if (authRequired) {
-	//      if(!loggedInUser)
-	//      {
-	//          // return next("/login");
+	//if (authRequired) {
+	//	if (!loggedInUser || !userHasToken) {
+	//		// Return URL: in case we interrupted the user's work flow.
+	//		const returnPath = window.location.pathname;
+	//		return next({ name: 'Login', query: { returnUrl: returnPath } });
 
-	//          const returnPath = window.location.pathname;
-	//          return next({ name: 'Login', query: { returnUrl: returnPath } });
-
-	//          // No need for this now, as we are dealing with this on the "Setup2FA" page
-	//          //if(loggedInUser.tfaEnabled && loggedInUser.token)
-	//          //    return next("/login-2fa");
-	//      }
-	//  }
+	//		// No need for this now, as we are dealing with this on the "Setup2FA" page
+	//		//if(loggedInUser.tfaEnabled && loggedInUser.token)
+	//		//    return next("/login-2fa");
+	//	}
+	//}
 
 	next();
 });
