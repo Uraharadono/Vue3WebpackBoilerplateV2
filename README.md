@@ -1,6 +1,9 @@
 # But first - DEMO
 https://vue-3-webpack-boilerplate-v2.netlify.app/
 
+**NOTE:** There is no backend API running that means: `Authentication`/`Authorization`, `Xhr Upload` and `Sephiroth grid` playground/demo showcases are not working properly. 
+
+
 # Vue 3 Webpack Boilerplate V2
 Vue.js@3.x with webpack **and not using the Vue CLI.**
 
