@@ -30,6 +30,7 @@ Also used/implemented:
 	to load fonts myself. Instead of what is shown in tutorial, I have installed `FontAwesome` from `npm` (https://fontawesome.com/docs/web/setup/packages)
 	and imported the `.scss` files myself.
 	Bundle size is *1Mb bigger*, and with my experience from before, after usage of ~20ish `.svg` icons, it bloats to almost same size.
+ - `Webpack Bundle Analyzer` - analyze sizes of your build files. I am using it only when building production, since `DevServer` is deploying in memory, so there is nothing to analyse. 
  - and more to come :)
 
 `(*NOTE*: I have tried and I think I managed to create a push for each one of the items in list above. So in case you need just "Modal component" you can find it in pushes.)`

@@ -76,8 +76,8 @@
 								<h5 class="mb-1 bold-revert">Bootstrap 5</h5>
 							</div>
 							<p class="mb-1">
-								Using only CSS modules we need, not whole bundle and not JS stuff (we are going to
-								implement those our-self)
+								Using only <code>CSS</code> modules we need, not whole bundle and not
+								<code>JS</code> stuff (we are going to implement those our-self)
 							</p>
 						</a>
 						<a href="#" class="list-group-item list-group-item-action">
@@ -85,8 +85,8 @@
 								<h5 class="mb-1 bold-revert">Axios wrapper</h5>
 							</div>
 							<p class="mb-1">
-								Wanted it to look similar to old jQuery Ajax and to support uploading files out of
-								the box
+								Wanted it to look similar to old <code> jQuery Ajax </code> and to support uploading
+								files out of the box.
 							</p>
 						</a>
 						<a class="list-group-item list-group-item-action">
@@ -107,6 +107,15 @@
 								and imported the .scss files myself. Budle size is 1Mb bigger, and with my
 								experience from before, after usage of ~20ish .svg icon, it bloats to almost same
 								size.
+							</p>
+						</a>
+						<a href="#" class="list-group-item list-group-item-action">
+							<div class="d-flex w-100 justify-content-between">
+								<h5 class="mb-1 bold-revert">Webpack Bundle Analyzer</h5>
+							</div>
+							<p class="mb-1">
+								Analyzes size of your build files. I am using it only when building production,
+								since <code>DevServer</code> is deploying in memory, so there is nothing to analyse
 							</p>
 						</a>
 					</div>
@@ -137,8 +146,9 @@
 								<i class="fa-solid fa-link text-primary"></i>
 							</div>
 							<p class="mb-1 text-start">
-								With support for both route (navigation) and component content based tab content. My
-								own authoring, quite simple, lightweight, easy to use. <br />
+								With support for both <code> route (navigation)</code> and component
+								<code>content based tab content</code>. My own authoring, quite simple, lightweight,
+								easy to use. <br />
 								Page that contains Demo of other components actually uses
 								<strong>route content</strong> and this one uses content.<br />
 								Please credit if you use it.
