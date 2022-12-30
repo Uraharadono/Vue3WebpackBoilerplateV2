@@ -7,22 +7,22 @@
 					style="overflow: visible; background: rgba(255, 255, 255, 0.2)"
 				>
 					<h3 class="card-header star-inserted">
-						<span>Twee factor verificatie</span>
+						<span>Two factor verification</span>
 					</h3>
 
-					<div class="card-body login-gray" style="padding: 0px; overflow: visible">
+					<div class="card-body" style="padding: 0px; overflow: visible">
 						<ComponentLoader v-show="isLoading" />
-						<form class="login-form mb-0" @submit.prevent="handleSubmit">
-							<div class="form-group">
+						<form @submit.prevent="handleSubmit">
+							<div class="form-group m-4">
 								<div
-									class="form-control"
+									class="col-8 offset-2"
 									:class="[v$.twoFactorCode.$error ? 'is-invalid' : '', '']"
 								>
 									<input
 										v-model="v$.twoFactorCode.$model"
-										class="input-control"
+										class="form-control"
 										type="text"
-										placeholder="Enter the code of your authenticator device"
+										placeholder="Enter the code from your authenticator device"
 									/>
 								</div>
 								<div
@@ -47,7 +47,7 @@
 
 							<div class="d-grid gap-2">
 								<button tabindex="0" class="btn btn-primary blue-gradient">
-									<span class="btn-text">Verifi&euml;ren</span>
+									<span class="btn-text">Verify</span>
 
 									<span class="btn-loader">
 										<i class="icon icofont-spinner" />

@@ -12,6 +12,7 @@ Also used/implemented:
  - `NProgress`
  - `Vue Qr code`
  - `Bootstrap 5`  - using only `CSS` modules we need, not whole bundle and not `JS` stuff (we are going to implement those our-self)
+ - `Authorization` and `Authentication` pages with logic that works with my server side project (can be found here: https://github.com/Uraharadono/Net7CoreApiBoilerplate)
  - Custom **Tabs component** - With support for both **route (navigation)** and **component content** based tab content. My own authoring, quite simple, lightweight, easy to use. Please credit if you use it. 
  - Custom **Xhr File Upload component** - this component supports quite the amount of history while also using my implementation of `Form Post` to post data to server
  - Custom **Autocomplete component** - my own authoring, quite simple, lightweight, easy to use. Please credit if you use it. 
@@ -54,6 +55,10 @@ npm run build
 npm run production
 ```
 
+## Credits
+
+I took webpack configuration inspiration from this project: https://github.com/Jamie-Yang/vue3-boilerplate
+It has been obviously heavily edited and is up to date with npm packages. 
 
 ## Architecture
 

@@ -2,6 +2,7 @@
 	<div id="nav">
 		<router-link to="/">Home</router-link> | <router-link to="/about">About</router-link> |
 		<router-link to="/playground/toggle">Playground</router-link> |
+		<router-link to="/authentication-info">Authentication info</router-link> |
 		<router-link to="/login">Login</router-link> |
 		<!--eslint-disable-next-line prettier/prettier-->
 		

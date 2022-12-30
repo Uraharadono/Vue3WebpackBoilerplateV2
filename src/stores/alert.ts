@@ -1,6 +1,6 @@
 import { defineStore } from 'pinia';
 
-const generalErrorMsg = 'Er is een fout opgetreden. Probeer het opnieuw.';
+const generalErrorMsg = 'An error has occurred. Please try later.';
 
 interface State {
 	type: string;
