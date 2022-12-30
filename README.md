@@ -52,7 +52,7 @@ npm install
 # Start development server.
 npm run build
 
-# Compile production bundle.
+# Compile production bundle. This will automatically analyze your bundle as well.  
 npm run production
 ```
 
