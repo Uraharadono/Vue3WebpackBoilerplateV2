@@ -47,13 +47,13 @@ export default {
 
 			gridSettings: {
 				culture: gridLanguageEnglish,
-				url: '/api/Clients/GetClients',
+				url: '/api/VueBoilerplate/GetClients',
 
 				isSelectable: false,
 				displayRowNumber: false,
 				displayColumnSettings: true,
 				loadFirstPageAutomatically: true,
-				pageSize: 100,
+				pageSize: 20,
 				pageSizes: [5, 10, 20, 50, 100],
 				showBottomPagination: true,
 				showTopPagination: true,
@@ -64,7 +64,7 @@ export default {
 				columns: [
 					{
 						// used for header
-						title: 'Naam',
+						title: 'Name',
 						isSearchable: true,
 						// used for data
 						fieldName: 'name',
@@ -91,7 +91,7 @@ export default {
 					},
 					{
 						// used for header
-						title: 'Klant soort',
+						title: 'Client type',
 						isSearchable: true,
 						// used for data
 						fieldName: 'clientType',
@@ -99,7 +99,7 @@ export default {
 					},
 					{
 						// used for header
-						title: 'Adres',
+						title: 'Address',
 						isSearchable: true,
 						// used for data
 						fieldName: 'address',
@@ -107,7 +107,7 @@ export default {
 					},
 					{
 						// used for header
-						title: 'Plaats',
+						title: 'Place',
 						isSearchable: true,
 						// used for data
 						fieldName: 'place',
@@ -115,7 +115,7 @@ export default {
 					},
 					{
 						// used for header
-						title: 'Telefoon',
+						title: 'Telephone',
 						isSearchable: false,
 						// used for data
 						fieldName: 'telephone',

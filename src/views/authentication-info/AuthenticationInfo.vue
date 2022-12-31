@@ -62,6 +62,24 @@
 						</div>
 						<p class="mb-1 text-start"></p>
 					</router-link>
+
+					<div class="list-group-item list-group-item-action">
+						<div class="d-flex w-100 justify-content-between">
+							<h5 class="mb-1"><strong>Confirm email</strong> (after registration)</h5>
+							<i class="fa-solid fa-link text-primary"> </i>
+						</div>
+						<p class="mb-1 text-start">
+							This functionality has been changed so it automatically returns account activation url
+							(confirm email). <br />
+							In simpler terms, I used url
+							<code>/api/VueBoilerplate/RegisterCircumvent</code> instead of
+							<code>/api/Auth/Register</code>.<br />
+							<b>IF YOU USE IT IN YOUR APP; MAKE SURE YOU CHANGE </b>
+							<code>authentication.ts -> register</code> method url to
+							<code>/api/Auth/Register</code>
+						</p>
+					</div>
+
 					<router-link to="/login-2fa" class="list-group-item list-group-item-action">
 						<div class="d-flex w-100 justify-content-between">
 							<h5 class="mb-1 text-start"><strong>Login with 2 factor authentication</strong></h5>
@@ -72,6 +90,7 @@
 							In order to be able to enable 2 factor authentication see link below.
 						</p>
 					</router-link>
+
 					<router-link to="/2fa-setup" class="list-group-item list-group-item-action">
 						<div class="d-flex w-100 justify-content-between">
 							<h5 class="mb-1 text-start"><strong>2 factor authentication setup</strong></h5>
@@ -82,6 +101,7 @@
 							=/= nothing to enable.
 						</p>
 					</router-link>
+
 					<router-link to="/forgot-password" class="list-group-item list-group-item-action">
 						<div class="d-flex w-100 justify-content-between">
 							<h5 class="mb-1 text-start"><strong>Forgot password</strong></h5>
@@ -89,6 +109,7 @@
 						</div>
 						<p class="mb-1 text-start">Page with email input to reset your password over email.</p>
 					</router-link>
+
 					<router-link class="list-group-item list-group-item-action" to="/reset-password">
 						<div class="d-flex w-100 justify-content-between">
 							<h5 class="mb-1">

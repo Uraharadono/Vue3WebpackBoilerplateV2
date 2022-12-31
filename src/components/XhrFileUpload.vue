@@ -158,7 +158,7 @@ export default {
 			progressIndicators: [],
 
 			debouncedCallback: debounce(function (xhrResponse) {
-				this.parentCallback(xhrResponse);
+				if (!isNullOrWs(this.parentCallback)) this.parentCallback(xhrResponse);
 			}, 700),
 		};
 	},
@@ -254,9 +254,10 @@ export default {
 					// console.log('err xhr.status ' + xhr.status)
 					// update progress indicator
 					progress.error = true;
-					// progress.message = xhr.responseText
+					progress.message = xhr.responseText;
 					// reactive update
-					vm.$set(progress, 'message', xhr.responseText);
+					// vm.$set(progress, 'message', xhr.responseText);
+					// vm.progress['message'] = xhr.responseText;
 				}
 			};
 			xhr.upload.onprogress = function (e) {

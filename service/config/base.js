@@ -17,7 +17,7 @@ const outputFileName = `js/[name]${isProd ? '.[contenthash:8]' : ''}.js`;
 
 let API_BASE_URL = {
 	production: JSON.stringify('https://api.something.com'),
-	development: JSON.stringify('https://localhost:44357'),
+	development: JSON.stringify('https://localhost:44335'),
 };
 
 module.exports = {

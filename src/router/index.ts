@@ -66,6 +66,13 @@ const routes: Array<RouteRecordRaw> = [
 		],
 	},
 
+	{
+		path: '/running-locally',
+		name: 'Running Locally',
+		component: () =>
+			import(/* webpackChunkName: "playground" */ '../views/playground/runningLocally.vue'),
+	},
+
 	// Authenticaton
 	{
 		path: '/authentication-info',

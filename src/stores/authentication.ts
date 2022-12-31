@@ -131,20 +131,23 @@ export const authenticationStore = defineStore('authUser', {
 			);
 		},
 		register(data: any) {
-			return ajax
-				.post(`/api/Auth/Register`, data)
-				.then((response: any) => {
-					console.log(response);
-					alertStore().success('Password reset! Please login to access your account.');
-					// it should be like below, so user should receive email, then activate account, then proceed to login.
-					// however, this is poco or in other words testing, so server will return us the return url
-					// router.push('login');
-					window.location = response;
-				})
-				.catch((e: any) => {
-					console.error(e);
-					alertStore().danger(e[0]);
-				});
+			return (
+				ajax
+					.post(`/api/VueBoilerplate/RegisterCircumvent`, data) // for boilerplate quick showreel, we automatically return activation url to confirm email
+					// .post(`/api/Auth/Register`, data) // In production it should be used like this
+					.then((response: any) => {
+						console.log(response);
+						alertStore().success('Password reset! Please login to access your account.');
+						// it should be like below, so user should receive email, then activate account, then proceed to login.
+						// however, this is poco or in other words testing, so server will return us the return url
+						// router.push('login');
+						window.location = response;
+					})
+					.catch((e: any) => {
+						console.error(e);
+						alertStore().danger(e[0]);
+					})
+			);
 		},
 		async confirmEmail(data: any) {
 			return (
