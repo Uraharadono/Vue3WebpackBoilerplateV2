@@ -66,6 +66,8 @@ npm run production
 I took webpack configuration inspiration from this project: https://github.com/Jamie-Yang/vue3-boilerplate
 It has been obviously heavily edited and is up to date with npm packages. 
 
+Another note is that there might be bits and pieces of code that I have reused in these last 3-4 years of writing all of these components. If you see something that should be credited that I forgot about, please let me know.
+
 ## Architecture
 
 ```text
