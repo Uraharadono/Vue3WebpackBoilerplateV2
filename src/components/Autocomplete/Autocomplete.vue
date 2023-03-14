@@ -48,6 +48,7 @@
 /* eslint-disable vue/require-prop-types, vue/require-default-prop, vue/require-explicit-emits, @typescript-eslint/no-unused-vars */
 import Item from './Item.vue';
 import utils from './utils.js';
+import { isNullOrWs } from '@/common/methods';
 
 export default {
 	name: 'Autocomplete',
@@ -101,7 +102,14 @@ export default {
 		value(newValue) {
 			if (!this.isSelectedValue(newValue)) {
 				this.onSelectItem(newValue);
-				this.searchText = this.getLabel(newValue);
+
+				// This will eat first letter in case we have pre-filled value
+				// this.searchText = this.getLabel(newValue);
+
+				// I need to do this, because otherwise when we have pre-filled label text, first input is going
+				// to be "eaten" after you start typing
+				let labelText = this.getLabel(newValue);
+				if (!isNullOrWs(labelText)) this.searchText = labelText;
 			}
 		},
 	},
