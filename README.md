@@ -61,6 +61,16 @@ npm run build
 npm run production
 ```
 
+
+## Upgrading
+
+Do not upgrade:
+- chalk                      
+- strip-ansi                 
+- stylelint-config-prettier  
+
+they cause issues that are unable to be fixed for now. 
+
 ## Credits
 
 I took webpack configuration inspiration from this project: https://github.com/Jamie-Yang/vue3-boilerplate
