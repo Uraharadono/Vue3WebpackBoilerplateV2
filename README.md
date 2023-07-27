@@ -69,7 +69,11 @@ Do not upgrade:
 - strip-ansi                 
 - stylelint-config-prettier  
 
-they cause issues that are unable to be fixed for now. 
+For building production: 
+- ora
+- rimraf
+
+they cause issues that are unable to be fixed for now. Mainly because they use import syntax instead of require.  
 
 ## Credits
 
