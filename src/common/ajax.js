@@ -94,7 +94,7 @@ function del(url, data = null) {
 
 function constructFetchUrl(url, data = null) {
 	return createRequest(
-		url + '?' + stringify(data, { allowDots: true, skipNulls: true }, null, 'GET')
+		url + '?' + stringify(data, { allowDots: true, skipNulls: true }, null, 'GET'),
 	).url;
 }
 

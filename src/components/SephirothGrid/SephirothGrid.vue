@@ -561,7 +561,7 @@ export default {
 
 					// **************************************************
 					this.parameters.lastPageIndex = Math.floor(
-						this.parameters.recordCount / this.settings.pageSize
+						this.parameters.recordCount / this.settings.pageSize,
 					);
 
 					if (this.parameters.recordCount % this.settings.pageSize === 0) {
