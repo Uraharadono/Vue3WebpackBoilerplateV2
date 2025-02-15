@@ -32,7 +32,7 @@
 	<router-view />
 </template>
 <script lang="ts">
-/* eslint-disable @typescript-eslint/no-unused-vars */
+/* eslint-disable no-unused-vars */
 import { mapActions, mapState, mapStores } from 'pinia';
 import alertStore from '@/stores/alert';
 import { authenticationStore } from '@/stores/authentication';

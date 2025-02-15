@@ -123,7 +123,6 @@ I got idea for this logic and backend one from here: https://github.com/herbat73
 	</div>
 </template>
 <script>
-// eslint-disable @typescript-eslint/no-this-alias
 // I got idea for this logic and backend one from here: https://github.com/herbat73/GenVue
 import { authBearerString } from '@/common/auth-header';
 import { debounce, isNullOrWs } from '@/common/methods';
@@ -177,7 +176,7 @@ export default {
 		browseForFiles: function () {
 			this.$refs.browse.click();
 		},
-		// eslint-disable-next-line @typescript-eslint/no-unused-vars
+		// eslint-disable-next-line no-unused-vars
 		onFilesUploaded: function (e) {
 			// console.log('onFilesUploaded')
 			let browse = this.$refs.browse;
@@ -211,14 +210,12 @@ export default {
 		},
 		cancelUpload: function (progress) {
 			// console.log('cancelUpload')
-			// eslint-disable-next-line @typescript-eslint/no-this-alias
 			let vm = this;
 			progress.xhr.abort();
 			vm.progressIndicators.splice(vm.progressIndicators.indexOf(progress), 1);
 		},
 		uploadFile: function (file, progress) {
 			// console.log('uploadFile')
-			// eslint-disable-next-line @typescript-eslint/no-this-alias
 			let vm = this;
 			let xhr = new XMLHttpRequest();
 			progress.xhr = xhr;

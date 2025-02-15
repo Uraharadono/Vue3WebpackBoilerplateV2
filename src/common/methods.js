@@ -1,4 +1,4 @@
-/* eslint-disable @typescript-eslint/no-this-alias */
+/* eslint-disable no-unused-vars */
 export const isNullOrWs = function (str) {
 	return (
 		typeof str === 'undefined' ||

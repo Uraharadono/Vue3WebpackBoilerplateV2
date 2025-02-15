@@ -68,7 +68,6 @@ export default {
 		closeModal() {
 			this.showModal = false;
 		},
-		// eslint-disable-next-line @typescript-eslint/no-empty-function
 		submitAndClose() {},
 		getSizeClass() {
 			const size = this.modalSize;

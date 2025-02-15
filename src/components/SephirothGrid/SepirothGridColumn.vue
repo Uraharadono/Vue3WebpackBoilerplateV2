@@ -44,7 +44,7 @@
 </template>
 
 <script>
-/* eslint-disable vue/no-mutating-props, @typescript-eslint/no-unused-vars */
+/* eslint-disable vue/no-mutating-props, no-unused-vars */
 import { debounce, isNullOrWs } from '@/common/methods';
 
 export default {

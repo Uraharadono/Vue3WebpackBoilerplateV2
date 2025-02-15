@@ -98,7 +98,7 @@
 </template>
 
 <script>
-/* eslint-disable @typescript-eslint/no-unused-vars */
+/* eslint-disable no-unused-vars */
 import { useVuelidate } from '@vuelidate/core';
 import { required, minLength, email, sameAs } from '@vuelidate/validators';
 import { oneNumber, oneUppercase } from '@/common/custom-validators';

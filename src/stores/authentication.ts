@@ -1,4 +1,4 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
+/* eslint-disable no-explicit-any */
 import router from '@/router';
 // import { useRoute } from 'vue-router';
 import ajax from '@/common/ajax';
@@ -119,7 +119,7 @@ export const authenticationStore = defineStore('authUser', {
 			return (
 				ajax
 					.post(`/api/Auth/ResetPassword`, data)
-					// eslint-disable-next-line @typescript-eslint/no-unused-vars
+					// eslint-disable-next-line no-unused-vars
 					.then((response: any) => {
 						alertStore().success('Password reset! Please login to access your account.');
 						router.push('login');
@@ -153,7 +153,7 @@ export const authenticationStore = defineStore('authUser', {
 			return (
 				ajax
 					.post(`/api/Auth/ConfirmEmail`, data)
-					// eslint-disable-next-line @typescript-eslint/no-unused-vars
+					// eslint-disable-next-line no-unused-vars
 					.then((response: any) => {
 						alertStore().success('Account activated! Please login to access your account.');
 						// router.push('login');

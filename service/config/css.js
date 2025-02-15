@@ -12,7 +12,7 @@ if (isProd) {
 		new MiniCssExtractPlugin({
 			filename,
 			chunkFilename: filename,
-		})
+		}),
 	);
 }
 
@@ -51,7 +51,22 @@ const genStyleRules = () => {
 		}
 
 		if (loader) {
-			loaders.push({ loader, options: loaderOptions });
+			loaders.push({
+				loader,
+				options: {
+					...loaderOptions,
+					// I have to do this, to do silent fail of warnings.
+					// Because I cannot upgrade whole project to use new sass import syntaxt, due to bootstrap not using it as well.
+					// I will get mixing errors in the end, and there is not reason for me to get them.
+					sassOptions: {
+						quietDeps: true, // Suppress dependency warnings
+						logger: {
+							warn: () => {}, // Suppress warnings
+							debug: () => {}, // Suppress debug logs
+						},
+					},
+				},
+			});
 		}
 
 		return { test, use: loaders };

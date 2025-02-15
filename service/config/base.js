@@ -47,6 +47,8 @@ module.exports = {
 			emitWarning: true,
 			extensions: ['.ts', '.tsx', '.js', '.jsx', '.vue'],
 			formatter: require('eslint-formatter-friendly'),
+			configType: 'flat',
+			eslintPath: 'eslint/use-at-your-own-risk',
 		}),
 		new VueLoaderPlugin(),
 		new CaseSensitivePathsPlugin(),
@@ -56,7 +58,7 @@ module.exports = {
 			templateParameters: {
 				...resolveClientEnv(
 					{ publicPath: isProd ? config.build.publicPath : config.dev.publicPath },
-					true /* raw */
+					true /* raw */,
 				),
 			},
 		}),
@@ -76,6 +78,11 @@ module.exports = {
 			// vue3 feature flags <http://link.vuejs.org/feature-flags>
 			__VUE_OPTIONS_API__: 'true',
 			__VUE_PROD_DEVTOOLS__: 'false',
+
+			// https://stackoverflow.com/questions/77752897/feature-flag-vue-prod-hydration-mismatch-details-is-not-explicitly-defined
+			// Vue CLI is in maintenance mode, and probably won't merge my PR to fix this in their tooling
+			// https://github.com/vuejs/vue-cli/pull/7443
+			__VUE_PROD_HYDRATION_MISMATCH_DETAILS__: 'false',
 
 			...resolveClientEnv({
 				publicPath: isProd ? config.build.publicPath : config.dev.publicPath,

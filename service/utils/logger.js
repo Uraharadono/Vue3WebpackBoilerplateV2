@@ -17,14 +17,10 @@ function _log(type, tag, message) {
 	}
 }
 
-const format = (label, msg) => {
-	return msg
+const format = (label, msg) => msg
 		.split('\n')
-		.map((line, i) => {
-			return i === 0 ? `${label} ${line}` : line.padStart(stripAnsi(label).length);
-		})
+		.map((line, i) => i === 0 ? `${label} ${line}` : line.padStart(stripAnsi(label).length))
 		.join('\n');
-};
 
 const chalkTag = (msg) => chalk.bgBlackBright.white.dim(` ${msg} `);
 
@@ -45,7 +41,7 @@ exports.done = (msg, tag = null) => {
 
 exports.warn = (msg, tag = null) => {
 	console.warn(
-		format(chalk.bgYellow.black(' WARN ') + (tag ? chalkTag(tag) : ''), chalk.yellow(msg))
+		format(chalk.bgYellow.black(' WARN ') + (tag ? chalkTag(tag) : ''), chalk.yellow(msg)),
 	);
 	_log('warn', tag, msg);
 };

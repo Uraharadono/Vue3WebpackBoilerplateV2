@@ -45,7 +45,7 @@
 </template>
 
 <script>
-/* eslint-disable vue/require-prop-types, vue/require-default-prop, vue/require-explicit-emits, @typescript-eslint/no-unused-vars */
+/* eslint-disable vue/require-prop-types, vue/require-default-prop, vue/require-explicit-emits, no-unused-vars */
 import Item from './Item.vue';
 import utils from './utils.js';
 import { isNullOrWs } from '@/common/methods';

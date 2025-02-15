@@ -136,7 +136,7 @@
 </template>
 
 <script>
-/* eslint-disable @typescript-eslint/no-unused-vars */
+/* eslint-disable no-unused-vars */
 import ComponentLoader from '@/components/ComponentLoader.vue';
 import ajax from '@/common/ajax';
 import { required, minLength, maxValue } from '@vuelidate/validators';

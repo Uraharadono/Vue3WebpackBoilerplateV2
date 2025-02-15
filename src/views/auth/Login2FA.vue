@@ -69,7 +69,7 @@
 </template>
 
 <script>
-/* eslint-disable @typescript-eslint/no-unused-vars */
+/* eslint-disable no-unused-vars */
 import { useVuelidate } from '@vuelidate/core';
 import { required, minLength, maxValue } from '@vuelidate/validators';
 import ComponentLoader from '@/components/ComponentLoader.vue';

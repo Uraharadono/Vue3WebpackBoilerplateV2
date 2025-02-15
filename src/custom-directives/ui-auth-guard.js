@@ -1,4 +1,4 @@
-/* eslint-disable @typescript-eslint/no-unused-vars */
+/* eslint-disable no-unused-vars */
 import { currentUser } from '@/common/auth-header';
 import { anyMatchInArray } from '@/common/methods';
 
