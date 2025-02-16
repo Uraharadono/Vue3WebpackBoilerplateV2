@@ -5,7 +5,7 @@ https://vue-3-webpack-boilerplate-v2.netlify.app/
 
 
 # Vue 3 Webpack Boilerplate V2
-Vue.js@3.x with webpack **and not using the Vue CLI.**
+Vue.js@3.x with webpack **and not using the Vue CLI.** (for VITE version visit here: https://github.com/Uraharadono/Vue3ViteBoilerplate)
 
 A Vue 3 Starter Boilerplate using Webpack 5 instead of CLI . 
 Also used/implemented:
